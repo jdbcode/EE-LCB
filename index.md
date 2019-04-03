@@ -2,7 +2,7 @@
 title: Welcome
 ---
 
-<img src='https://jdbcode.github.io/ee-lcb/assets/images/ee-lcb-logo.svg'>
+<img src='https://jdbcode.github.io/EE-LCB/assets/images/ee-lcb-logo.svg'>
 
 ## Earth Engine Landsat Collection Builder
 
