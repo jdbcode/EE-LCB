@@ -22,7 +22,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 | Sub-module  | Applies to |
 | :- | :- |
-| xx   | All Landsat data |
+| ls   | All Landsat data |
 | sr   | Landsat surface reflectance data |
 | toa  | Landsat top of atmosphere |
 | refl | SR and TOA reflectance |
