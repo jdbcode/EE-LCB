@@ -20,10 +20,17 @@ nav_order: 4
 <details>
 <summary>Make a Landsat 8 surface reflectance collection</summary>
 
-+ markdown list 1
-    + nested list 1
-    + nested list 2
-+ markdown list 2
+
+{% highlight js %}
+var myProps = {
+	startYear: 1984,
+	endYear: 2018,
+	startDay: '07-01',
+	endDay: '09-01'
+}
+lcb.setProps(myProps)
+var col = lcb.gather()
+{% endhighlight %}
 
 <a href="http://example.com">Link</a>
 </details>
