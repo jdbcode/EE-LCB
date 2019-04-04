@@ -36,7 +36,27 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ## Set properties
 
-### setProps
+### setProps()
+
+&#10551; `dictionary`
+
+Updates the "props" global dictionary with desired collection properties. 
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| colProps | `dictionary` | A dictionary specifying desired collection properties |
+
+```js
+var colProps = {
+	startYear: 2013,
+	endYear: 2018,
+	startDay: '07-01',
+	endDay: '09-01'
+	sensors: ['LC08'],
+	aoi: ee.Geometry.Point([-110.438, 44.609])
+}
+lcb.setProps(colProps)
+```
 
 --------------------------------------------------------------------------------------------
 
@@ -53,19 +73,21 @@ of the module.
 | :- | :- | :- |
 | props.startYear | `int` | Minimum year in the desired range of the collection |
 | props.endYear | `int` | Maximum year in the desired range of the collection |
-| props.startDate | `string` | blah blah |
-| props.endDate | `string` | blah blah |
-| props.endDate | `string` | blah blah |
+| props.startDate | `string` | Minimum calendar date of the collection as 'mm-dd' (inclusive) |
+| props.endDate | `string` | Maximum calendar date of the collection as 'mm-dd' (exclusive) |
+| props.aoi | `ee.Geometry` | Area of interest used to filter image collection by bounds |
 
 ```js
-var myProps = {
-	startYear: 1984,
+var colProps = {
+	startYear: 2013,
 	endYear: 2018,
 	startDay: '07-01',
 	endDay: '09-01'
+	sensors: ['LC08'],
+	aoi: ee.Geometry.Point([-110.438, 44.609])
 }
-lcb.setProps(myProps)
-var col = lcb.gather()
+lcb.setProps(colProps)
+var col = lcb.sr.gather()
 ```
 
 [Try Live](http://example.com/)

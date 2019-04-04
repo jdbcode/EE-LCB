@@ -40,7 +40,7 @@ AOI - area-of-interest
 
 ```js
 var colProps = {
-	startYear: 1984,
+	startYear: 2013,
 	endYear: 2018,
 	startDay: '07-01',
 	endDay: '09-01'
@@ -57,7 +57,7 @@ var col = lcb.sr.gather()
 
 ```js
 var colProps = {
-	startYear: 1984,
+	startYear: 1999,
 	endYear: 2018,
 	startDate: '07-01',
 	endDate: '09-01'
@@ -75,7 +75,7 @@ var col = lcb.sr.gather()
 ```js
 var colProps = {
 	startYear: 1984,
-	endYear: 2018,
+	endYear: 2012,
 	startDate: '07-01',
 	endDate: '09-01'
 	sensors: ['LT05'],

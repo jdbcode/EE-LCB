@@ -55,11 +55,11 @@ var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
 
 // define some desired collection properties
 var userProps = {
-	startYear:1984,
-	endYear:2018,
-	startDay:'07-01',
-	endDay:'09-01'
-	mask:['cloud', 'shadow']
+	startYear: 1984,
+	endYear: 2018,
+	startDate: '07-01',
+	endDate: '09-01'
+	cfmask: ['cloud', 'shadow']
 }
 
 // set module properties
