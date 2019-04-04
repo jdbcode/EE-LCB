@@ -41,12 +41,36 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ## Collection building functions
 
-### sr.gather()*
+### sr.gather() ⇒ `ee.ImageCollection`
+
+Gathers Landsat images into a collection. This is the base function
+of the module.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| props.startYear | `int` | blah blah |
+| props.endYear | `int` | blah blah |
+| props.startDay | `string` | blah blah |
+| props.endDay | `string` | blah blah |
+
+```js
+var myProps = {
+	startYear: 1984,
+	endYear: 2018,
+	startDay: '07-01',
+	endDay: '09-01'
+}
+lcb.setProps(myProps)
+var col = lcb.gather()
+```
+
+[Try Live](http://example.com/){: .btn }
+
 
 A quite wonderful function.
 
 
-### sr.harmonize(img)*
+### sr.harmonize(img)
 
 ### xx.exclude()
 
@@ -60,7 +84,7 @@ A quite wonderful function.
 
 ### xx.correctSLCoff
 
-###	xx.correct
+---
 
 ## Masking functions
 
@@ -87,6 +111,8 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 ### sr.maskOutliers*
 
 ### sr.maskDiff
+
+---
 
 ## Collection assessment functions
 
