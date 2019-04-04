@@ -38,7 +38,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ## Set properties
 
-### **setProps()**
+### setProps()
 
 &#10551; `dictionary`
 
