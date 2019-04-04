@@ -42,7 +42,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ## Collection building functions
 
-### **sr.gather()** 
+### sr.gather() 
 
 ⮑↳⮩⤷`ee.ImageCollection`
 
