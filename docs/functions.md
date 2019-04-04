@@ -36,7 +36,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ## Set properties
 
-### setProps()
+### **setProps()**
 
 &#10551; `dictionary`
 
@@ -46,12 +46,14 @@ Updates the "props" global dictionary with desired collection properties.
 | :- | :- | :- |
 | colProps | `dictionary` | A dictionary specifying desired collection properties |
 
+[Try Live](http://example.com/)
+
 ```js
 var colProps = {
 	startYear: 2013,
 	endYear: 2018,
-	startDay: '07-01',
-	endDay: '09-01'
+	startDate: '07-01',
+	endDate: '09-01'
 	sensors: ['LC08'],
 	aoi: ee.Geometry.Point([-110.438, 44.609])
 }
@@ -81,8 +83,8 @@ of the module.
 var colProps = {
 	startYear: 2013,
 	endYear: 2018,
-	startDay: '07-01',
-	endDay: '09-01'
+	startDate: '07-01',
+	endDate: '09-01'
 	sensors: ['LC08'],
 	aoi: ee.Geometry.Point([-110.438, 44.609])
 }
