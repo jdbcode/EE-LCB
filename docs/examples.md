@@ -17,21 +17,13 @@ nav_order: 4
 
 ## Collection assembly
 
-<details><summary>Make a Landsat 8 surface reflectance collection</summary>
+<details>
+<summary>Make a Landsat 8 surface reflectance collection</summary>
 
-{% raw %}
-```js
-var myProps = {
-	startYear: 1984,
-	endYear: 2018,
-	startDay: '07-01',
-	endDay: '09-01'
-}
-lcb.setProps(myProps)
-var col = lcb.gather()
-```
-{% endraw %}
-
++ markdown list 1
+    + nested list 1
+    + nested list 2
++ markdown list 2
 
 <a href="http://example.com">Link</a>
 </details>
