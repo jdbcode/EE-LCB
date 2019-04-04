@@ -19,15 +19,15 @@ nav_order: 4
 
 ## Glossary
 
-MSS - all MSS sensor images
-LT - all TM sensor images (LT04 and LT05)
-LE07 - Landsat 7 ETM+
-LC08 - Landsat 8 OLI
-SR - surface reflectance
-TOA - Top of atmosphere reflectance
-DN - digital number 
-COL - image collection (ee.ImageCollection)
-PROPS - properties
+MSS - all MSS sensor images<br>
+LT - all TM sensor images (LT04 and LT05)<br>
+LE07 - Landsat 7 ETM+<br>
+LC08 - Landsat 8 OLI<br>
+SR - surface reflectance<br>
+TOA - Top of atmosphere reflectance<br>
+DN - digital number<br>
+COL - image collection (ee.ImageCollection)<br>
+PROPS - properties<br>
 AOI - area-of-interest
 
 
