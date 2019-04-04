@@ -1,3 +1,6 @@
+
+<img src='https://jdbcode.github.io/EE-LCB/assets/images/ee-lcb-logo.svg'>
+
 ## Earth Engine Landsat Collection Builder (EE-LCB)
 
 A convenience library for the Google Earth Engine JavaScript API that builds a Landsat
