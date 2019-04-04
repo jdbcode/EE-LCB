@@ -18,10 +18,9 @@ nav_order: 4
 ## Collection assembly
 
 <details><summary>Make a Landsat 8 surface reflectance collection</summary>
-[link](http://example.com)
+<a href="http://example.com">Link</a>
 
-<div class="language-js highlighter-rouge">
-  <pre class="highlight">
+{% highlight js %}
 var myProps = {
 	startYear: 1984,
 	endYear: 2018,
@@ -30,11 +29,8 @@ var myProps = {
 }
 lcb.setProps(myProps)
 var col = lcb.gather()
-  </pre>
-</div>
-```js
-print("hello world!")
-```
+{% endhighlight %}
+
 </details>
 
 
