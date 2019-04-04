@@ -47,8 +47,8 @@ Gathers Landsat images into a collection. This is the base function
 of the module.
 
 | Param  | Type                | Description  |
-| :------ | :------------------- | :------------ |
-| props.startYear | `int` | blah blah |
+| :- | :- | :- |
+| props.startYear | `int` | blah blah blah blah blah blah blah blah blah blah blah blah blah blah |
 | props.endYear | `int` | blah blah |
 | props.startDay | `string` | blah blah |
 | props.endDay | `string` | blah blah |
@@ -64,7 +64,11 @@ lcb.setProps(myProps)
 var col = lcb.gather()
 ```
 
+[Try Live](http://example.com/)
+
 [Try Live](http://example.com/){: .btn }
+
+
 
 ### sr.harmonize(img)
 
