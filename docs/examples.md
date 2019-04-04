@@ -18,10 +18,8 @@ nav_order: 4
 ## Collection assembly
 
 <details>
-<summary>Make a Landsat 8 surface reflectance collection</summary>
 
-
-<pre language="js"><code>
+```js
 var myProps = {
 	startYear: 1984,
 	endYear: 2018,
@@ -30,9 +28,8 @@ var myProps = {
 }
 lcb.setProps(myProps)
 var col = lcb.gather()
-</code></pre>
+```
 
-<a href="http://example.com">Link</a>
 </details>
 
 
