@@ -17,15 +17,12 @@ nav_order: 4
 
 ## Collection assembly
 
-<details><summary><h2>Make a Landsat 8 surface reflectance collection</h2></summary>
-<p>
+<details><summary>Make a Landsat 8 surface reflectance collection</summary>
+[link](http://example.com)
 
-<a href="http://example.com">Link</a>
-<pre>
+```js
 print("hello world!")
-</pre>
-
-</p>
+```
 </details>
 
 
