@@ -17,22 +17,38 @@ nav_order: 4
 
 ## Collection assembly
 
-<details>
+--------------------------------------------------------------------------------------------
+
+### Make a Landsat 8 surface reflectance collection
 
 ```js
-var myProps = {
+var colProps = {
 	startYear: 1984,
 	endYear: 2018,
 	startDay: '07-01',
 	endDay: '09-01'
+	sensors: ['LC08'],
+	aoi: ee.Geometry.Point([-110.438,44.609])
 }
-lcb.setProps(myProps)
-var col = lcb.gather()
+lcb.setProps(colProps)
+var col = lcb.sr.gather()
 ```
 
-</details>
-
-
+--------------------------------------------------------------------------------------------
 
 ### Make a Landsat 5 surface reflectance collection
 
+```js
+var colProps = {
+	startYear: 1984,
+	endYear: 2018,
+	startDate: '07-01',
+	endDate: '09-01'
+	sensors: ['LT05'],
+	aoi: ee.Geometry.Point([-110.438,44.609])
+}
+lcb.setProps(colProps)
+var col = lcb.sr.gather()
+```
+
+--------------------------------------------------------------------------------------------
