@@ -37,7 +37,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ### setProps
 
-
+---
 
 ## Collection building functions
 
@@ -65,10 +65,6 @@ var col = lcb.gather()
 ```
 
 [Try Live](http://example.com/){: .btn }
-
-
-A quite wonderful function.
-
 
 ### sr.harmonize(img)
 
