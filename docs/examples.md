@@ -15,6 +15,23 @@ nav_order: 4
 {:toc}
 
 
+
+
+## Glossary
+
+MSS - all MSS sensor images
+LT - all TM sensor images (LT04 and LT05)
+LE07 - Landsat 7 ETM+
+LC08 - Landsat 8 OLI
+SR - surface reflectance
+TOA - Top of atmosphere reflectance
+DN - digital number 
+COL - image collection (ee.ImageCollection)
+PROPS - properties
+AOI - area-of-interest
+
+
+
 ## Collection assembly
 
 --------------------------------------------------------------------------------------------
@@ -36,7 +53,7 @@ var col = lcb.sr.gather()
 
 --------------------------------------------------------------------------------------------
 
-### Make a Landsat 7 surface reflectance collection
+### Make a L7 SR COL
 
 ```js
 var colProps = {
@@ -53,7 +70,7 @@ var col = lcb.sr.gather()
 
 --------------------------------------------------------------------------------------------
 
-### Make a Landsat 5 surface reflectance collection
+### Make an L5 SR COL
 
 ```js
 var colProps = {
@@ -70,7 +87,7 @@ var col = lcb.sr.gather()
 
 --------------------------------------------------------------------------------------------
 
-### Make Landsat 8 surface reflectance collection for a summer 2016
+### Make an L8 SR COL for summer 2016
 
 ```js
 var colProps = {
