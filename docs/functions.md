@@ -20,11 +20,13 @@ In some cases a third word is included.
 
 Function are divided into several sub-modules based on Landsat data type. 
 
-**xx**: applies to all Landsat data<br>
-**sr**: applies to Landsat surface reflectance<br>
-**dn**: applies to landsat digital number<br>
-**toa**: applies to landsat top of atmosphere<br>
-**refl**: applies to SR and TOA reflectance
+| Sub-module  | Description |
+| :- | :- |
+|**xx** | applies to all Landsat data |
+|**sr**| applies to Landsat surface reflectance |
+|**dn**| applies to Landsat digital number |
+|**toa**| applies to Landsat top of atmosphere |
+|**refl**| applies to SR and TOA reflectance |
 
 
 ## Table of contents
@@ -49,18 +51,17 @@ resulting "props" dictionary to the console.
 
 ```js
 var colProps = {
-	startYear: 2013,
-	endYear: 2018,
-	startDate: '07-01',
-	endDate: '09-01'
-	sensors: ['LC08'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 2013,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LC08'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 }
 lcb.setProps(colProps)
 ```
 
 [Try Live](http://example.com/)
-{: .text-right}
 
 --------------------------------------------------------------------------------------------
 
@@ -86,7 +87,7 @@ var colProps = {
   startYear: 2013,
   endYear: 2018,
   startDate: '07-01',
-  endDate: '09-01'
+  endDate: '09-01',
   sensors: ['LC08'],
   aoi: ee.Geometry.Point([-110.438, 44.609])
 }
