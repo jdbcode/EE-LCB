@@ -40,13 +40,12 @@ Function are divided into several sub-modules based on Landsat data type.
 
 &#10551; `dictionary`
 
-Updates the "props" global dictionary with desired collection properties. 
+Updates the "props" global dictionary with desired collection properties. Will print the
+resulting "props" dictionary to the console.
 
 | Param  | Type | Description |
 | :- | :- | :- |
 | colProps | `dictionary` | A dictionary specifying desired collection properties |
-
-[Try Live](http://example.com/)
 
 ```js
 var colProps = {
@@ -59,6 +58,8 @@ var colProps = {
 }
 lcb.setProps(colProps)
 ```
+
+[Try Live](http://example.com/)
 
 --------------------------------------------------------------------------------------------
 
@@ -81,12 +82,12 @@ of the module.
 
 ```js
 var colProps = {
-	startYear: 2013,
-	endYear: 2018,
-	startDate: '07-01',
-	endDate: '09-01'
-	sensors: ['LC08'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 2013,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '09-01'
+  sensors: ['LC08'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 }
 lcb.setProps(colProps)
 var col = lcb.sr.gather()
