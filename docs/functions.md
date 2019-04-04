@@ -85,6 +85,7 @@ lcb.setProps(myProps)
 var col = lcb.sr.col().map(lcb.sr.maskFmask)
 ```
 
+[Try Live](http://example.com/){: .btn .btn-outline }
 [Try Live](http://example.com/){: .btn }
 
 
