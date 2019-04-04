@@ -51,10 +51,11 @@ of the module.
 
 | Param  | Type | Description |
 | :- | :- | :- |
-| props.startYear | `int` | blah blah |
-| props.endYear | `int` | blah blah |
-| props.startDay | `string` | blah blah |
-| props.endDay | `string` | blah blah |
+| props.startYear | `int` | Minimum year in the desired range of the collection |
+| props.endYear | `int` | Maximum year in the desired range of the collection |
+| props.startDate | `string` | blah blah |
+| props.endDate | `string` | blah blah |
+| props.endDate | `string` | blah blah |
 
 ```js
 var myProps = {
