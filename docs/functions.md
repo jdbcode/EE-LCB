@@ -37,7 +37,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ### setProps
 
----
+--------------------------------------------------------------------------------------------
 
 ## Collection building functions
 
@@ -46,9 +46,9 @@ Function are divided into several sub-modules based on Landsat data type.
 Gathers Landsat images into a collection. This is the base function
 of the module.
 
-| Param  | Type                | Description  |
+| Param  | Type | Description &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 | :- | :- | :- |
-| props.startYear | `int` | blah blah blah blah blah blah blah blah blah blah blah blah blah blah |
+| props.startYear | `int` | blah blah |
 | props.endYear | `int` | blah blah |
 | props.startDay | `string` | blah blah |
 | props.endDay | `string` | blah blah |
@@ -66,9 +66,7 @@ var col = lcb.gather()
 
 [Try Live](http://example.com/)
 
-[Try Live](http://example.com/){: .btn }
-
-
+--------------------------------------------------------------------------------------------
 
 ### sr.harmonize(img)
 
