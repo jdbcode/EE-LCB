@@ -44,7 +44,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 ### sr.gather() 
 
-&#x2BA1; `ee.ImageCollection`
+&#x2BA1;  `ee.ImageCollection`
 
 Gathers Landsat images into a collection. This is the base function
 of the module.
