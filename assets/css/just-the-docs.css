@@ -824,6 +824,9 @@ li .highlight {
 .text-center {
   text-align: center !important; }
 
+.text-right {
+  text-align: right !important; }
+  
 .label,
 .label-blue {
   display: inline-block;
