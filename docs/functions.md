@@ -47,7 +47,7 @@ Gathers Landsat images into a collection. This is the base function
 of the module.
 
 | Param  | Type                | Description  |
-| ------ | ------------------- | ------------ |
+| :------ | :------------------- | :------------ |
 | props.startYear | `int` | blah blah |
 | props.endYear | `int` | blah blah |
 | props.startDay | `string` | blah blah |
