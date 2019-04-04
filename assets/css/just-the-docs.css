@@ -1089,7 +1089,7 @@ table {
   max-width: 100%;
   margin-bottom: 1.5rem;
   overflow-x: auto;
-  border-collapse: separate;
+  border-collapse: separate; }
   /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 14px rgba(0, 0, 0, 0.05); }*/
   /*border: 1px solid rgba(238, 235, 238, 0.5);*/
   @media (min-width: 31.25rem) {
