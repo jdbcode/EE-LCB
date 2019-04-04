@@ -19,15 +19,11 @@ In some cases a third word is included.
 
 Function are divided into several sub-modules based on Landsat data type. 
 
-xx = applies to all Landsat data
-
-sr = applies to Landsat surface reflectance
-
-dn = applies to landsat digital number
-
-toa = applies to landsat top of atmosphere
-
-refl = applies to SR and TOA reflectance
+**xx**: applies to all Landsat data<br>
+**sr**: applies to Landsat surface reflectance<br>
+**dn**: applies to landsat digital number<br>
+**toa**: applies to landsat top of atmosphere<br>
+**refl**: applies to SR and TOA reflectance
 
 
 ## Table of contents
@@ -68,14 +64,14 @@ A quite wonderful function.
 
 ## Masking functions
 
-### sr.maskFmask(img)* ⇒ `ee.ImageCollection`
+### sr.maskFmask(img) ⇒ `ee.ImageCollection`
 
 Applies CFmask cloud and shadow mask to Landsat surface reflectance image.
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
-| props.mask | `list` | A list of elements to be masked out. Options: 'cloud', 'shadow', 'water', 'snow' |
+| props.mask | `list` | A list of elements to be masked out. Options:<br> 'cloud', 'shadow', 'water', 'snow' |
 
 ```js
 var myProps = {
@@ -85,7 +81,6 @@ lcb.setProps(myProps)
 var col = lcb.sr.col().map(lcb.sr.maskFmask)
 ```
 
-[Try Live](http://example.com/){: .btn .btn-outline }
 [Try Live](http://example.com/){: .btn }
 
 
