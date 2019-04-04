@@ -29,8 +29,9 @@ var myProps = {
 }
 lcb.setProps(myProps)
 var col = lcb.gather()
+</pre>
 {% endhighlight %}
-</pre><br><br>
+<br><br>
 
 <a href="http://example.com">Link</a>
 </details>
