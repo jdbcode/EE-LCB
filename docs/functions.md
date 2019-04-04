@@ -5,7 +5,11 @@ has_children: false
 nav_order: 3
 ---
 
-This is the functions home
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 
 # Set properties
