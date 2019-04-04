@@ -7,6 +7,6 @@ need to move past everyone writing essentially the same pre-processing scripts 1
 different ways before finally doing some analyses. Let's get to the good stuff already 
 and utilize EE for furthering our understanding of the Earth ecosystem.
 
-Please see the [site](https://jdbcode.github.io/ee-lcb/) for more information.
+Please see the [site](https://jdbcode.github.io/EE-LCB/) for more information.
 
 
