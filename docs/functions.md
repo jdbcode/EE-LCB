@@ -20,13 +20,13 @@ In some cases a third word is included.
 
 Function are divided into several sub-modules based on Landsat data type. 
 
-| Sub-module  | Description |
+| Sub-module  | Applies to |
 | :- | :- |
-|**xx** | applies to all Landsat data |
-|**sr**| applies to Landsat surface reflectance |
-|**dn**| applies to Landsat digital number |
-|**toa**| applies to Landsat top of atmosphere |
-|**refl**| applies to SR and TOA reflectance |
+| xx   | All Landsat data |
+| sr   | Landsat surface reflectance data |
+| toa  | Landsat top of atmosphere |
+| refl | SR and TOA reflectance |
+| dn   | Landsat digital number |
 
 
 ## Table of contents
