@@ -6,6 +6,7 @@ nav_order: 3
 ---
 
 # Functions
+{:.no_toc}
 
 Most functions operate on a single ee.Image so that they can be easily mapped over an ee.ImageCollection.
 They focus on a single task for maximum flexibility
@@ -27,7 +28,7 @@ Function are divided into several sub-modules based on Landsat data type.
 
 
 ## Table of contents
-{: .no_toc .text-delta }
+{:.no_toc .text-delta}
 
 1. TOC
 {:toc}
