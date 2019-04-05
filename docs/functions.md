@@ -172,17 +172,18 @@ Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and
 red, green, and blue, respectively.
 
 ```js
-// Example (`ee.Image`)
+// Example: apply to ee.Image
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var img = lcb.sr.visualize654(lcb.sr.getLC08img());
-Map.addLayer(img);
+var img = lcb.sr.getLC08img();
+var imgRGB = lcb.sr.visualize654(img)
+Map.addLayer(imgRGB);
 ```
 
 ```js
-//Example (`ee.ImageCollection`)
+// Example: apply to ee.ImageCollection
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var col = lcb.sr.getLC08col()
-             .map(lcb.sr.visualize654)
+                .map(lcb.sr.visualize654)
 Map.addLayer(col.first());
 ```
 
