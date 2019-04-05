@@ -171,8 +171,9 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and 4 mapped to 
 red, green, and blue, respectively.
 
+<br>
 Example: apply to ee.Image
-{: .lh-0 .fs-2 }
+{: .lh-0 .fs-2 .fw-500}
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var img = lcb.sr.getLC08img();
@@ -181,7 +182,7 @@ Map.addLayer(imgRGB);
 ```
 
 Example: apply to ee.ImageCollection
-{: .lh-0 .fs-2 .fw-700}
+{: .lh-0 .fs-2 .fw-600}
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var col = lcb.sr.getLC08col()
