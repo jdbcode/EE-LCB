@@ -175,18 +175,17 @@ Example: apply to ee.Image
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var img = lcb.sr.getLC08img();
-var imgRGB = lcb.sr.visualize654(img)
-Map.addLayer(imgRGB);
+var rgbImg = lcb.sr.visualize654(lcb.sr.getLC08img();)
+Map.addLayer(rgbImg);
 ```
 
 Example: apply to ee.ImageCollection
-{: .lh-0 .fs-2 }
+{: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var col = lcb.sr.getLC08col()
-                .map(lcb.sr.visualize654)
-Map.addLayer(col.first());
+var rgbCol = lcb.sr.getLC08col()
+                   .map(lcb.sr.visualize654)
+Map.addLayer(rgbCol.first());
 ```
 
 
