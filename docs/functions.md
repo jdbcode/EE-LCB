@@ -113,7 +113,7 @@ var col = lcb.sr.gather()
 
 ### xx.correctSLCoff
 
----
+--------------------------------------------------------------------------------------------
 
 ## Masking functions
 
@@ -141,7 +141,7 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 
 ### sr.maskDiff
 
----
+--------------------------------------------------------------------------------------------
 
 ## Collection assessment functions
 
@@ -169,4 +169,91 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 
 ### refl.visualizeTC
 
+## Example datasets
 
+### sr.getLT05img()
+
+&#10551; `ee.Image`
+
+Returns an example *LANDSAT/LT05/C01/T1_SR* image.
+
+```js
+lcb.sr.getLT05img()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getLE07img()
+
+&#10551; `ee.Image`
+
+Returns an example *LANDSAT/LE07/C01/T1_SR* image. Note that the images is SLC-off.
+
+```js
+lcb.sr.getLE07img()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getLC08img()
+
+&#10551; `ee.Image`
+
+Returns an example *LANDSAT/LC08/C01/T1_SR* image.
+
+```js
+lcb.sr.getLC08img()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getLT05col()
+
+&#10551; `ee.ImageCollection`
+
+Returns an example *LANDSAT/LT05/C01/T1_SR* image collection.
+
+```js
+lcb.sr.getLT05col()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getLE07col()
+
+&#10551; `ee.ImageCollection`
+
+Returns an example *LANDSAT/LE07/C01/T1_SR* image collection. Note that the images are SLC-off.
+
+```js
+lcb.sr.getLE07col()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getLC08col()
+
+&#10551; `ee.ImageCollection`
+
+Returns an example *LANDSAT/LC08/C01/T1_SR* image collection.
+
+```js
+lcb.sr.getLC08col()
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.getL578col()
+
+&#10551; `ee.ImageCollection`
+
+Returns an example image collection with one entry from:
+- *LANDSAT/LT05/C01/T1_SR*
+- *LANDSAT/LE07/C01/T1_SR*
+- *LANDSAT/LC08/C01/T1_SR*
+
+```js
+lcb.sr.getL578col()
+```
+
+--------------------------------------------------------------------------------------------
