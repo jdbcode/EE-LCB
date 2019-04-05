@@ -71,9 +71,9 @@ lcb.setProps(colProps)
 
 &#10551; `ee.ImageCollection`
 
-Gathers Landsat images into a collection. In the case where *LC08* mixes with either *LT05* or *LE07* data,
-the band stack and the band names will be standardized to include only reflectance and CFmask *pixel_qa* bands 
-and the band names will match the *LC08* convention. In all other cases the original band arrangement and names 
+Gathers Landsat images into a collection. In the case where *LC08* images are included with either *LT05* or *LE07* images,
+all images will be standardized to include only reflectance and CFmask *pixel_qa* bands 
+and band names will match the *LC08* convention. In all other cases the original band arrangement and names 
 will remain.
 
 | Param  | Type | Description |
