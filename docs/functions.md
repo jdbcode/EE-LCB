@@ -32,7 +32,7 @@ Function are divided into several sub-modules based on Landsat data type.
 ## Table of contents
 {:.no_toc .text-delta}
 
-* test
+* TOC
 {:toc}
 
 
@@ -91,8 +91,8 @@ var colProps = {
   endYear: 2018,
   startDate: '07-01',
   endDate: '09-01',
-  sensors: ['LC08'],
   aoi: ee.Geometry.Point([-110.438, 44.609])
+  sensors: ['LC08'],
 }
 lcb.setProps(colProps)
 var col = lcb.sr.gather()
@@ -164,13 +164,32 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 
 ## Visualization
 
-### refl.visualize543
+### sr.visualize654
 
-### refl.visualize432
+&#10551; `ee.Image`
 
-### refl.visualize321
+Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and 4 mapped to 
+red, green, and blue, respectively.
 
-### refl.visualizeTC
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.visualize654(lcb.sr.getLC08img());
+Map.addLayer(img);
+```
+
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var col = lcb.sr.getLC08col()
+             .map(lcb.sr.visualize654)
+Map.addLayer(col.first());
+```
+
+
+### sr.visualize543
+
+### sr.visualize432
+
+### sr.visualizeTC
 
 ## Example datasets
 
