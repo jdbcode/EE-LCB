@@ -203,7 +203,9 @@ Map.addLayer(col.first());
 Returns an example *LANDSAT/LT05/C01/T1_SR* image.
 
 ```js
-lcb.sr.getLT05img()
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLT05img()
+print(img)
 ```
 
 --------------------------------------------------------------------------------------------
