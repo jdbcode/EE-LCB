@@ -71,8 +71,10 @@ lcb.setProps(colProps)
 
 &#10551; `ee.ImageCollection`
 
-Gathers Landsat images into a collection. This is the base function
-of the module.
+Gathers Landsat images into a collection. In the case where *LC08* mixes with either *LT05* or *LE07* data,
+the band stack and the band names will be standardized to include only reflectance and CFmask *pixel_qa* bands 
+and the band names will match the *LC08* convention. In all other cases the original band arrangement and names 
+will remain.
 
 | Param  | Type | Description |
 | :- | :- | :- |
@@ -81,6 +83,7 @@ of the module.
 | props.startDate | `string` | Minimum calendar date of the collection as 'mm-dd' (inclusive) |
 | props.endDate | `string` | Maximum calendar date of the collection as 'mm-dd' (exclusive) |
 | props.aoi | `ee.Geometry` | Area of interest used to filter image collection by bounds |
+| props.sensors: | `list` | A list of the sensors to include images from. Options: 'LT05, 'LE07', 'LC08' |
 
 ```js
 var colProps = {
