@@ -180,8 +180,9 @@ var imgRGB = lcb.sr.visualize654(img)
 Map.addLayer(imgRGB);
 ```
 
+Example: apply to ee.ImageCollection
+{: .lh-0 .fs-2 .fw-700}
 ```js
-// Example: apply to ee.ImageCollection
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var col = lcb.sr.getLC08col()
                 .map(lcb.sr.visualize654)
