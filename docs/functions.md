@@ -114,7 +114,7 @@ red, green, and blue, respectively.
 | :- | :- | :- |
 | props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
 
-Example: apply to ee.Image
+Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -122,7 +122,7 @@ var imgHarmonized = lcb.sr.harmonize(lcb.sr.getLT05img());
 print(img);
 ```
 
-Example: apply to ee.ImageCollection
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -130,8 +130,6 @@ var colHarmonized = lcb.sr.getL578col()
                           .map(lcb.sr.harmonize);
 print(colHarmonized);
 ```
-[Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
 
 --------------------------------------------------------------------------------------------
 
