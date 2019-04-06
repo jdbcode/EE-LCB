@@ -99,10 +99,45 @@ var col = lcb.sr.gather()
 ```
 
 [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 
 --------------------------------------------------------------------------------------------
 
 ### sr.harmonize(img)
+
+&#10551; `ee.Image`
+
+Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and 4 mapped to 
+red, green, and blue, respectively.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
+
+Example: apply to ee.Image
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var imgHarmonized = lcb.sr.harmonize(lcb.sr.getLT05img());
+print(img);
+```
+
+Example: apply to ee.ImageCollection
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colHarmonized = lcb.sr.getL578col()
+                          .map(lcb.sr.harmonize);
+print(colHarmonized);
+```
+[Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+
+--------------------------------------------------------------------------------------------
+
+
+
+
 
 ### xx.exclude()
 
