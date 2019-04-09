@@ -209,8 +209,13 @@ Reduce an image collection to annual mosaics by mean.
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-var col = lcb.sr.getLT05col();
+
+// get sample LC08 collection
+var col = lcb.sr.getLC08col();
+
+// reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMean(col);
 print(mosCol);
 ```
