@@ -217,15 +217,98 @@ var col = lcb.sr.getLC08col();
 
 // reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMean(col);
+
+// print the collection
 print(mosCol);
 ```
 
 --------------------------------------------------------------------------------------------
 
-
-
-
 ### xx.mosaicMedian
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection to annual mosaics by median.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.compositeDate | `string` | Date to assign to annual mosaic images. Format: 'mm-dd' |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+
+// get sample LC08 collection
+var col = lcb.sr.getLC08col();
+
+// reduce collection to annual mosaics by mean
+var mosCol = lcb.sr.mosaicMedian(col);
+
+// print the collection
+print(mosCol);
+```
+
+--------------------------------------------------------------------------------------------
+
+### xx.mosaicMin
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection to annual mosaics by minimum.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.compositeDate | `string` | Date to assign to annual mosaic images. Format: 'mm-dd' |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+
+// get sample LC08 collection
+var col = lcb.sr.getLC08col();
+
+// reduce collection to annual mosaics by mean
+var mosCol = lcb.sr.mosaicMin(col);
+
+// print the collection
+print(mosCol);
+```
+
+--------------------------------------------------------------------------------------------
+
+### xx.mosaicMax
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection to annual mosaics by minimum.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.compositeDate | `string` | Date to assign to annual mosaic images. Format: 'mm-dd' |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+
+// get sample LC08 collection
+var col = lcb.sr.getLC08col();
+
+// reduce collection to annual mosaics by mean
+var mosCol = lcb.sr.mosaicMax(col);
+
+// print the collection
+print(mosCol);
+```
+
 
 ### xx.mosaicMedoid
 
