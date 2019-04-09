@@ -49,6 +49,8 @@ resulting "props" dictionary to the console.
 | :- | :- | :- |
 | colProps | `dictionary` | A dictionary specifying desired collection properties |
 
+Example. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
 var colProps = {
   startYear: 2013,
@@ -61,7 +63,6 @@ var colProps = {
 lcb.setProps(colProps)
 ```
 
-[Try Live](http://example.com/)
 
 --------------------------------------------------------------------------------------------
 
@@ -161,7 +162,6 @@ Applies the Tasseled Cap transformation to a Landsat surface reflectance image a
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
@@ -193,7 +193,6 @@ Applies the Normalized Burn Ratio transformation to a Landsat surface reflectanc
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
@@ -225,7 +224,6 @@ Applies the Normalized Difference Vegetation Index transformation to a Landsat s
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
@@ -257,7 +255,6 @@ Applies the Normalized Difference Snow Index transformation to a Landsat surface
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
@@ -289,7 +286,6 @@ Applies the Normalized Difference Moisture Index transformation to a Landsat sur
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
@@ -331,7 +327,6 @@ Applies CFmask cloud and shadow mask to a Landsat surface reflectance image.
 | img  | `ee.Image`| An ee.Image object  |
 | props.mask | `list` | A list of elements to be masked out. Options:<br> 'cloud', 'shadow', 'water', 'snow' |
 
-[Try Live](http://example.com/){: .btn }
 Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
