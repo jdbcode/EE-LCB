@@ -134,8 +134,7 @@ Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
 var col = lcb.sr.getL578col()
-var colHarmonized = col.map(lcb.sr.harmonize);
-                          
+var colHarmonized = col.map(lcb.sr.harmonize);                     
 print(colHarmonized);
 ```
 
@@ -149,7 +148,167 @@ print(colHarmonized);
 
 ## Transformation functions
 
-### ???
+--------------------------------------------------------------------------------------------
+
+### addBandTC(img)
+
+&#10551; `ee.Image`
+
+Applies the Tasseled Cap transformation to a Landsat surface reflectance image and adds bands:
+'TCB', 'TCG', 'TCW', 'TCA'.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var img = lcb.sr.getLC08img();
+var imgTrans = lcb.sr.addBandTC(img);
+print(imgTrans);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.addBandTC);
+print(colMasked);
+```
+
+--------------------------------------------------------------------------------------------
+
+### addBandNBR(img)
+
+&#10551; `ee.Image`
+
+Applies the Normalized Burn Ratio transformation to a Landsat surface reflectance image and adds bands:
+'NBR'.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var img = lcb.sr.getLC08img();
+var imgTrans = lcb.sr.addBandNBR(img);
+print(imgTrans);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.addBandNBR);
+print(colMasked);
+```
+
+--------------------------------------------------------------------------------------------
+
+### addBandNDVI(img)
+
+&#10551; `ee.Image`
+
+Applies the Normalized Difference Vegetation Index transformation to a Landsat surface reflectance image and adds bands:
+'NDVI'.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var img = lcb.sr.getLC08img();
+var imgTrans = lcb.sr.addBandNDVI(img);
+print(imgTrans);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.addBandNDVI);
+print(colMasked);
+```
+
+--------------------------------------------------------------------------------------------
+
+### addBandNDSI(img)
+
+&#10551; `ee.Image`
+
+Applies the Normalized Difference Snow Index transformation to a Landsat surface reflectance image and adds bands:
+'NDSI'.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var img = lcb.sr.getLC08img();
+var imgTrans = lcb.sr.addBandNDSI(img);
+print(imgTrans);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.addBandNDSI);
+print(colMasked);
+```
+
+--------------------------------------------------------------------------------------------
+
+### addBandNDMI(img)
+
+&#10551; `ee.Image`
+
+Applies the Normalized Difference Moisture Index transformation to a Landsat surface reflectance image and adds bands:
+'NDMI'.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var img = lcb.sr.getLC08img();
+var imgTrans = lcb.sr.addBandNDMI(img);
+print(imgTrans);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.addBandNDMI);
+print(colMasked);
+```
+
+
 
 ## Correction functions
 
@@ -161,24 +320,45 @@ print(colHarmonized);
 
 ## Masking functions
 
-### sr.maskFmask(img) ⇒ `ee.ImageCollection`
+### sr.maskFmask(img)
 
-Applies CFmask cloud and shadow mask to Landsat surface reflectance image.
+&#10551; `ee.Image`
+
+Applies CFmask cloud and shadow mask to a Landsat surface reflectance image.
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
 | img  | `ee.Image`| An ee.Image object  |
 | props.mask | `list` | A list of elements to be masked out. Options:<br> 'cloud', 'shadow', 'water', 'snow' |
 
+[Try Live](http://example.com/){: .btn }
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
-var myProps = {
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
 	mask: ['cloud', 'shadow', 'water', 'snow']
-}
-lcb.setProps(myProps)
-var col = lcb.sr.col().map(lcb.sr.maskFmask)
+};
+lcb.setProps(colProps);
+var img = lcb.sr.getLC08img();
+var imgMasked = lcb.sr.maskCFmask(img);
+print(imgMasked);
 ```
 
-[Try Live](http://example.com/){: .btn }
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+	mask: ['cloud', 'shadow', 'water', 'snow']
+};
+lcb.setProps(colProps);
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.maskCFmask);
+print(colMasked);
+```
+
+
 
 
 ### sr.maskOutliers*
