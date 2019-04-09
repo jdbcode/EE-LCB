@@ -151,6 +151,36 @@ print(colStandardized);
 
 --------------------------------------------------------------------------------------------
 
+### sr.removeBandCFmask(img)
+
+&#10551; `ee.Image`
+
+Removes the CFmask *pixel_qa* bands from a Landsat surface reflectance image.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| img | `ee.image` | A Landsat surface reflectance image |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLC08img();
+var imgNoCFmask = lcb.sr.removeBandCFmask(img);
+print(imgNoCFmask);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colNoCFmask = col.map(lcb.sr.removeBandCFmask);                     
+print(colNoCFmask);
+```
+
+--------------------------------------------------------------------------------------------
+
 
 ### xx.exclude()
 
