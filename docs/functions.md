@@ -120,8 +120,36 @@ print(colHarmonized);
 
 --------------------------------------------------------------------------------------------
 
+### sr.standardizeBands(img)
 
+&#10551; `ee.Image`
 
+Standardizes image to include only reflectance and CFmask *pixel_qa* bands with 
+names following the *LC08* convention.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| img | `ee.image` | A Landsat surface reflectance image |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLT05img();
+var imgStandardized = lcb.sr.standardizeBands(img);
+print(imgStandardized);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLT05col();
+var colStandardized = col.map(lcb.sr.standardizeBands);                     
+print(colStandardized);
+```
+
+--------------------------------------------------------------------------------------------
 
 
 ### xx.exclude()
