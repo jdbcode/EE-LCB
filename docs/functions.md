@@ -15,27 +15,6 @@ nav_order: 3
 {:toc}
 
 
-Most functions operate on a single ee.Image so that they can be easily mapped over an ee.ImageCollection.
-They focus on a single task for maximum flexibility
-
-They use a global dictionary with many properties, this allows for simply function mapping - all of the global properties
-are exposed to a given function being mapped.
-
-Function names generally follow a verb-noun pattern where camel case is used to concatenate words, 
-where the first is always a verb is typically a noun or in some cases an adjective.
-In some cases a third word is included.
-
-Function are divided into several sub-modules based on Landsat data type. 
-
-| Sub-module  | Applies to |
-| :- | :- |
-| ls   | All Landsat data |
-| sr   | Landsat surface reflectance data |
-| toa  | Landsat top of atmosphere |
-| refl | SR and TOA reflectance |
-| dn   | Landsat digital number |
-
-
 ## Set properties
 
 ### setProps(colProps)
@@ -364,11 +343,11 @@ print(colMasked);
 
 ## Collection assessment functions
 
+--------------------------------------------------------------------------------------------
+
 ### sr.countValid
 
 ## Composite functions
-
-### xx.mosaicPath*
 
 ### sr.mosaicMean(col)
 
@@ -384,16 +363,9 @@ Reduce an image collection to annual mosaics by mean.
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
-// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-
-// get sample LC08 collection
 var col = lcb.sr.getLC08col();
-
-// reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMean(col);
-
-// print the collection
 print(mosCol);
 ```
 
@@ -484,6 +456,42 @@ var mosCol = lcb.sr.mosaicMax(col);
 print(mosCol);
 ```
 
+--------------------------------------------------------------------------------------------
+
+### ls.mosaicPath(col)
+
+&#10551; `ee.ImageCollection`
+
+Mosaics images from the same WRS-2 path and date.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat image collection |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var colProps = {
+	startYear: 2018,
+	endYear: 2018,
+	startDate: '07-01',
+	endDate: '09-01',
+	sensors: ['LC08'],
+	aoi: ee.Geometry.Polygon(
+        [[[-115.73283108195818, 47.0864041328592],
+          [-115.73283108195818, 40.76536820958065],
+          [-106.37247951945818, 40.76536820958065],
+          [-106.37247951945818, 47.0864041328592]]])
+};
+lcb.setProps(colProps);
+var col = lcb.sr.gather();
+var colMos = lcb.ls.mosaicPath(col);
+print(colMos);
+Map.addLayer(colMos.filter(ee.Filter.eq('distinct_path', '038_20180709')));
+```
+
+--------------------------------------------------------------------------------------------
 
 ### xx.mosaicMedoid
 

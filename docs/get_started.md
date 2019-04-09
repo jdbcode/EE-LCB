@@ -31,7 +31,6 @@ being built.
 
 ## Create a Landsat surface reflectance collection
 
-
 ```js
 var props = {
   startYear: 1986,
@@ -78,7 +77,25 @@ The `props` dictionary is...
 
 
 
+Most functions operate on a single ee.Image so that they can be easily mapped over an ee.ImageCollection.
+They focus on a single task for maximum flexibility
 
+They use a global dictionary with many properties, this allows for simply function mapping - all of the global properties
+are exposed to a given function being mapped.
+
+Function names generally follow a verb-noun pattern where camel case is used to concatenate words, 
+where the first is always a verb is typically a noun or in some cases an adjective.
+In some cases a third word is included.
+
+Function are divided into several sub-modules based on Landsat data type. 
+
+| Sub-module  | Applies to |
+| :- | :- |
+| ls   | All Landsat data |
+| sr   | Landsat surface reflectance data |
+| toa  | Landsat top of atmosphere |
+| refl | SR and TOA reflectance |
+| dn   | Landsat digital number |
 
 
 
