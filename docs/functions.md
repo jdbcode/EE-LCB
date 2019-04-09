@@ -493,7 +493,31 @@ Map.addLayer(colMos.filter(ee.Filter.eq('distinct_path', '038_20180709')));
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicMedoid
+### xx.mosaicMedoid(col)
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection to annual mosaics by minimum.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.compositeDate | `string` | Date to assign to annual mosaic images. Format: 'mm-dd' |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+lcb.setProps({compositeDate: '07-15'});
+var col = lcb.sr.getLC08col()
+  .map(lcb.sr.standardizeBands)
+  .map(lcb.sr.removeBandCFmask)
+  .map(lcb.sr.addBandNDVI);
+var colMos = lcb.sr.mosaicMedoid(col);
+print(colMos);
+```
+
+--------------------------------------------------------------------------------------------
 
 ### xx.mosaicTargetDOY
 

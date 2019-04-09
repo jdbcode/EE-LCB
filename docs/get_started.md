@@ -100,7 +100,10 @@ Function are divided into several sub-modules based on Landsat data type.
 
 
 
-
+The mosaic functions are intended to create annual mosaics - they will create a mosaic per year of all images included for each distinct year
+in the collection - note that the program can handle inter-year collection requests - helpful in the southern hemisphere. 
+If you want to "reduce" an entire collection, use the base
+API collection reduction functions like `col.reduce(ee.Reducer.Mean())`
 
 
 
