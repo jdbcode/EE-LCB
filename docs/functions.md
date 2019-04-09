@@ -8,6 +8,13 @@ nav_order: 3
 # Functions
 {:.no_toc}
 
+## Table of contents
+{:.no_toc .text-delta}
+
+* TOC
+{:toc}
+
+
 Most functions operate on a single ee.Image so that they can be easily mapped over an ee.ImageCollection.
 They focus on a single task for maximum flexibility
 
@@ -29,16 +36,9 @@ Function are divided into several sub-modules based on Landsat data type.
 | dn   | Landsat digital number |
 
 
-## Table of contents
-{:.no_toc .text-delta}
-
-* TOC
-{:toc}
-
-
 ## Set properties
 
-### setProps()
+### setProps(colProps)
 
 &#10551; `dictionary`
 
@@ -399,7 +399,7 @@ print(mosCol);
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicMedian
+### sr.mosaicMedian(col)
 
 &#10551; `ee.ImageCollection`
 
@@ -428,7 +428,7 @@ print(mosCol);
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicMin
+### sr.mosaicMin(col)
 
 &#10551; `ee.ImageCollection`
 
@@ -457,7 +457,7 @@ print(mosCol);
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicMax
+### sr.mosaicMax(col)
 
 &#10551; `ee.ImageCollection`
 
