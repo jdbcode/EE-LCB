@@ -385,16 +385,9 @@ Reduce an image collection to annual mosaics by median.
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
-// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-
-// get sample LC08 collection
 var col = lcb.sr.getLC08col();
-
-// reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMedian(col);
-
-// print the collection
 print(mosCol);
 ```
 
@@ -414,16 +407,9 @@ Reduce an image collection to annual mosaics by minimum.
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
-// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-
-// get sample LC08 collection
 var col = lcb.sr.getLC08col();
-
-// reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMin(col);
-
-// print the collection
 print(mosCol);
 ```
 
@@ -443,16 +429,9 @@ Reduce an image collection to annual mosaics by minimum.
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
-// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-
-// get sample LC08 collection
 var col = lcb.sr.getLC08col();
-
-// reduce collection to annual mosaics by mean
 var mosCol = lcb.sr.mosaicMax(col);
-
-// print the collection
 print(mosCol);
 ```
 
