@@ -85,7 +85,13 @@ will remain.
 | props.aoi | `ee.Geometry` | Area of interest used to filter image collection by bounds |
 | props.sensors: | `list` | A list of the sensors to include images from. Options: 'LT05, 'LE07', 'LC08' |
 
+Example. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
 var colProps = {
   startYear: 2013,
   endYear: 2018,
@@ -94,12 +100,13 @@ var colProps = {
   aoi: ee.Geometry.Point([-110.438, 44.609])
   sensors: ['LC08'],
 }
+
+// set collection properties
 lcb.setProps(colProps)
+
+// gather images following collection properties into an ee.ImageCollection
 var col = lcb.sr.gather()
 ```
-
-[Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
 
 --------------------------------------------------------------------------------------------
 
@@ -107,8 +114,7 @@ var col = lcb.sr.gather()
 
 &#10551; `ee.Image`
 
-Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and 4 mapped to 
-red, green, and blue, respectively.
+Spectrally harmonize Landsat 5 and 7 to 8 or vise versa.
 
 | Param  | Type | Description |
 | :- | :- | :- |
@@ -118,16 +124,18 @@ Example: apply to ee.Image. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var imgHarmonized = lcb.sr.harmonize(lcb.sr.getLT05img());
+var img = lcb.sr.getLT05img();
+var imgHarmonized = lcb.sr.harmonize(img);
 print(img);
 ```
 
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var colHarmonized = lcb.sr.getL578col()
-                          .map(lcb.sr.harmonize);
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getL578col()
+var colHarmonized = col.map(lcb.sr.harmonize);
+                          
 print(colHarmonized);
 ```
 
@@ -187,7 +195,30 @@ var col = lcb.sr.col().map(lcb.sr.maskFmask)
 
 ### xx.mosaicPath*
 
-### xx.mosaicMean
+### sr.mosaicMean(col)
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection to annual mosaics by mean.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.compositeDate | `string` | Date to assign to annual mosaic images. Format: 'mm-dd' |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLT05col();
+var mosCol = lcb.sr.mosaicMean(col);
+print(mosCol);
+```
+
+--------------------------------------------------------------------------------------------
+
+
+
 
 ### xx.mosaicMedian
 
