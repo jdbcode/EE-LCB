@@ -181,6 +181,36 @@ print(colNoCFmask);
 
 --------------------------------------------------------------------------------------------
 
+### sr.removeImageSLCoff(col)
+
+&#10551; `ee.ImageCollection`
+
+Removes LE07 scan line corrector off (SLC-off) images from a Landsat surface reflectance image.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.image` | A Landsat surface reflectance collection |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+  startYear: 1999,
+  endYear: 2005,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LE07'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+};
+lcb.setProps(colProps);
+var col = lcb.sr.gather();
+var colNoSLCoff = lcb.sr.removeSLCoff(col);
+print(colNoSLCoff);
+```
+
+--------------------------------------------------------------------------------------------
+
 
 ### xx.exclude()
 
