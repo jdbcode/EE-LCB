@@ -26,21 +26,29 @@ lcb.setProps({
   sensors: ['LT05', 'LE07', 'LC08'],
   cfmask: ['cloud', 'shadow'],
   harmonizeTo: 'LC08',
-  aoi: ee.Geometry.Point([-110.438, 44.609])
+  aoi: ee.Geometry.Point([-122.8848, 43.7929])
 });
 
-var summerCol = lcb.sr.gather()
-  .map(lcb.sr.maskCFmask)
-  .map(lcb.sr.harmonize)
-  .map(lcb.sr.addBandNDVI)
-  .select('NDVI');
-  
-var meanSummerNDVI = lcb.sr.mosaicMean(summerCol);
+// make an ee.List sequence from startYear to endYear
+var annualMeanSummerNDVI = ee.ImageCollection.fromImages(
+  ee.List.sequence(lcb.props.startYear, lcb.props.endYear)
+  .map(function(year){
+    return lcb.sr.mosaicMean(
+	  ee.ImageCollection(
+	    lcb.sr.gather(year)
+	    .map(lcb.sr.maskCFmask)
+	    .map(lcb.sr.harmonize)
+	    .map(lcb.sr.addBandNDVI)
+	    .select('NDVI')
+	  )
+    );
+  })
+);
 ```
 
 This examples completes the following steps:
 
-1. Gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August 1984-2018 into a collection; 
+1. Gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August annually; 
 2. Masks clouds and cloud shadows
 3. Standardizes TM and ETM+ images to OLI;
 4. Calculates NDVI
