@@ -39,7 +39,7 @@ var annualMeanSummerNDVI = ee.ImageCollection.fromImages(
         .map(lcb.sr.harmonize)
         .map(lcb.sr.addBandNDVI)
         .select('NDVI')
-	  )
+       )
     );
   })
 );
