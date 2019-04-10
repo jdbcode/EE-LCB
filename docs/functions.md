@@ -185,7 +185,7 @@ print(colNoCFmask);
 
 &#10551; `ee.ImageCollection`
 
-Removes LE07 scan line corrector off (SLC-off) images from a Landsat surface reflectance image.
+Removes LE07 scan line corrector (SLC)-off images from a Landsat surface reflectance image.
 
 | Param  | Type | Description |
 | :- | :- | :- |
@@ -211,8 +211,32 @@ print(colNoSLCoff);
 
 --------------------------------------------------------------------------------------------
 
+### sr.removeImageList(col)
 
-### xx.exclude()
+&#10551; `ee.ImageCollection`
+
+Removes images included in 'exclude' property of the collection properties dictionary.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.image` | A Landsat collection |
+| props.exclude | `list` | A list of Landsat `system:index` strings |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+  exclude: ['LT05_038029_20000707']
+};
+lcb.setProps(colProps);
+var col = lcb.sr.getLT05col();
+print(col);
+var colExclude = lcb.sr.removeImageList(col);
+print(colExclude);
+```
+
+--------------------------------------------------------------------------------------------
 
 ## Transformation functions
 
