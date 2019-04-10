@@ -407,7 +407,7 @@ print(colMasked);
 
 ## Masking functions
 
-### sr.maskFmask(img)
+### sr.maskCFmask(img)
 
 &#10551; `ee.Image`
 
