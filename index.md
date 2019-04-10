@@ -22,20 +22,20 @@ lcb.setProps({
   startYear: 1984,
   endYear: 2018,
   startDate: '07-01',
-  endDate: '09-01'
+  endDate: '09-01',
   sensors: ['LT05', 'LE07', 'LC08'],
-  mask: ['cloud', 'shadow'],
+  cfmask: ['cloud', 'shadow'],
   harmonizeTo: 'LC08',
   aoi: ee.Geometry.Point([-110.438, 44.609])
-})
+});
 
 var summerCol = lcb.sr.gather()
   .map(lcb.sr.maskCFmask)
   .map(lcb.sr.harmonize)
   .map(lcb.sr.addBandNDVI)
-  .select('NDVI')
+  .select('NDVI');
   
-var meanSummerNDVI = mosaicMean(summerCol)
+var meanSummerNDVI = lcb.sr.mosaicMean(summerCol);
 ```
 
 This examples completes the following steps:
