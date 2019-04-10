@@ -36,77 +36,216 @@ AOI - area-of-interest
 
 --------------------------------------------------------------------------------------------
 
-### Make a Landsat 8 surface reflectance collection
+### Make a Landsat OLI SR collection Jul-Aug 2013-2018
 
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
 var colProps = {
-	startYear: 2013,
-	endYear: 2018,
-	startDay: '07-01',
-	endDay: '09-01'
-	sensors: ['LC08'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 2013,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LC08'],
+  aoi: ee.Geometry.Point([-110.438, 44.609]
 }
+
+// set collection properties
 lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
 var col = lcb.sr.gather()
+
+// print the collection
+print(col)
 ```
 
 --------------------------------------------------------------------------------------------
 
-### Make a L7 SR COL
+### Make a Landsat ETM+ SR collection July 2000
 
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
 var colProps = {
-	startYear: 1999,
-	endYear: 2018,
-	startDate: '07-01',
-	endDate: '09-01'
-	sensors: ['LE07'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 2000,
+  endYear: 2000,
+  startDate: '07-01',
+  endDate: '08-01'
+  sensors: ['LE07'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 }
+
+// set collection properties
 lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
 var col = lcb.sr.gather()
+
+// print the collection
+print(col)
 ```
 
 --------------------------------------------------------------------------------------------
 
-### Make an L5 SR COL
+### Make an Landsat TM collection Jul-Aug 1984-2012
 
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
 var colProps = {
-	startYear: 1984,
-	endYear: 2012,
-	startDate: '07-01',
-	endDate: '09-01'
-	sensors: ['LT05'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 1984,
+  endYear: 2012,
+  startDate: '07-01',
+  endDate: '09-01'
+  sensors: ['LT05'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 }
+
+// set collection properties
 lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
 var col = lcb.sr.gather()
+
+// print the collection
+print(col)
 ```
 
 --------------------------------------------------------------------------------------------
 
-### Make an L8 SR COL for summer 2016
+### Make a Landsat TM & ETM+ SR collection July 1999-2003
 
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
 var colProps = {
-	startYear: 2018,
-	endYear: 2018,
-	startDate: '07-01',
-	endDate: '09-01'
-	sensors: ['LC08'],
-	aoi: ee.Geometry.Point([-110.438, 44.609])
+  startYear: 1999,
+  endYear: 2003,
+  startDate: '07-01',
+  endDate: '08-01'
+  sensors: ['LT05', 'LE07'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 }
+
+// set collection properties
 lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
 var col = lcb.sr.gather()
+
+// print the collection
+print(col)
 ```
 
 --------------------------------------------------------------------------------------------
 
+### Make a Landsat TM, ETM+, and OLI SR collection July 1984-2018
 
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 
+// define collection properties
+var colProps = {
+  startYear: 1984,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '08-01'
+  sensors: ['LT05', 'LE07', 'LC08'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+}
 
+// set collection properties
+lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
+var col = lcb.sr.gather()
+
+// print the collection
+print(col)
+```
+
+--------------------------------------------------------------------------------------------
+
+### Make a Landsat TM & ETM+ SR collection July 1984-2018 and mask out clouds & shadow
+
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
+var colProps = {
+  startYear: 1984,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '08-01'
+  sensors: ['LT05', 'LE07'],
+  mask: ['cloud', 'shadow'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+}
+
+// set collection properties
+lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
+var col = lcb.sr.gather().map(lcb.sr.maskCFmask)
+
+// print the collection
+print(col)
+```
+
+--------------------------------------------------------------------------------------------
+
+### Make a Landsat TM, ETM+ and OLI SR collection July 1984-2018, mask out clouds & shadow & harmonize to OLI
+
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define collection properties
+var colProps = {
+  startYear: 1984,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '08-01'
+  sensors: ['LT05', 'LE07', 'LC08'],
+  mask: ['cloud', 'shadow'],
+  harmonizeTo: 'LC08',
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+}
+
+// set collection properties
+lcb.setProps(colProps)
+
+// gather images into an ee.ImageCollection
+var col = lcb.sr.gather().map(lcb.sr.maskCFmask).map(lcb.sr.harmonize)
+
+// print the collection
+print(col)
+```
 
 
 
