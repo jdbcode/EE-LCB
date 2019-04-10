@@ -38,11 +38,7 @@ var annualMeanSummerNDVI = ee.ImageCollection.fromImages(
         .map(lcb.sr.maskCFmask)
         .map(lcb.sr.harmonize)
         .map(lcb.sr.addBandNDVI)
-        .select('NDVI')
-       )
-    );
-  })
-);
+        .select('NDVI')));}));
 ```
 
 This examples completes the following steps:
