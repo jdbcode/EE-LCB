@@ -246,5 +246,52 @@ var col = lcb.sr.gather().map(lcb.sr.maskCFmask).map(lcb.sr.harmonize)
 print(col)
 ```
 
+--------------------------------------------------------------------------------------------
+
+### Make an annual summer NDVI mean time series collection from Landsat TM, ETM+ and OLI SR 1984-2018
+
+SOMETHING IS WRONG IF THERE IS A MISSING YEAR IN THE COLLECTION - TRY POINT: aoi: ee.Geometry.Point([-110.438, 44.609])
+
+Example [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+// define collection properties
+var colProps = {
+  startYear: 1984,
+  endYear: 2018,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LT05', 'LE07', 'LC08'],
+  cfmask: ['cloud', 'shadow'],
+  harmonizeTo: 'LC08',
+  aoi: ee.Geometry.Point([-122.8848, 43.7929])
+};
+
+// set collection properties
+lcb.setProps(colProps);
+
+// make an ee.List sequence from startYear to endYear
+var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+
+// map over the list of years - return a list of annual mean NDVI composite images
+var imgList = years.map(function(year){
+  var col = ee.ImageCollection(lcb.sr.gather(year)
+    .map(lcb.sr.maskCFmask)
+    .map(lcb.sr.harmonize)
+    .map(lcb.sr.addBandNDVI)
+    .select('NDVI'));
+  return lcb.sr.mosaicMean(col);
+});
+
+// convert the ee.List of annual mean NDVI composite images to an ee.ImageCollection
+var meanNDVIcol = ee.ImageCollection.fromImages(imgList);
+
+// print and map the resulting collection
+print(meanNDVIcol);
+Map.addLayer(meanNDVIcol);
+```
+
+
+
 
 
