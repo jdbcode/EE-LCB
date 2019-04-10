@@ -6,7 +6,7 @@ title: Welcome
 
 ## Earth Engine Landsat Collection Builder
 
-A client library for the Google Earth Engine JavaScript API that standardizes 
+A client library for the [Google Earth Engine](https://earthengine.google.com/) JavaScript API that standardizes 
 Landsat collection building and pre-processing routines.
 
 Functions are designed to map over an image collection with a single task and be chained
@@ -18,7 +18,7 @@ of mean summer NDVI 1984-2018:
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 
-var colProps = {
+lcb.setProps({
   startYear: 1984,
   endYear: 2018,
   startDate: '07-01',
@@ -27,7 +27,7 @@ var colProps = {
   mask: ['cloud', 'shadow'],
   harmonizeTo: 'LC08',
   aoi: ee.Geometry.Point([-110.438, 44.609])
-}
+})
 
 var summerCol = lcb.sr.gather()
   .map(lcb.sr.maskCFmask)
@@ -35,21 +35,21 @@ var summerCol = lcb.sr.gather()
   .map(lcb.sr.addBandNDVI)
   .select('NDVI')
   
-var meanSummerNDVI = mosaicMean(col)
+var meanSummerNDVI = mosaicMean(summerCol)
 ```
 
 This examples completes the following steps:
 
-1. gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August 1984-2018 into a collection; 
-2. masks clouds and cloud shadows
-3. standardizes TM and ETM+ images to OLI;
-4. calculates NDVI
-5. makes a collection composed of annual mean NDVI composites
+1. Gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August 1984-2018 into a collection; 
+2. Masks clouds and cloud shadows
+3. Standardizes TM and ETM+ images to OLI;
+4. Calculates NDVI
+5. Makes a collection composed of annual mean NDVI composites
 
 By way of example, EE-LCB wishes to promote development, documentation, and sharing of client libraries that
 provide consistency and ease of accomplishment for processing steps of other datasets and applications.
-There is a need to move past everyone writing essentially the same processing scripts one hundred  
-different ways before getting to analyses. Let's get to the good stuff already! 
+There is a need to move past everyone writing essentially the same processing scripts one hundred different 
+ways before getting to analyses. Let's get to the good stuff already! 
 
 **This site is under construction.**
 
