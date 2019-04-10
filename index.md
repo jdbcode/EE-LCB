@@ -29,17 +29,16 @@ lcb.setProps({
   aoi: ee.Geometry.Point([-122.8848, 43.7929])
 });
 
-// make an ee.List sequence from startYear to endYear
 var annualMeanSummerNDVI = ee.ImageCollection.fromImages(
   ee.List.sequence(lcb.props.startYear, lcb.props.endYear)
   .map(function(year){
     return lcb.sr.mosaicMean(
-	  ee.ImageCollection(
-	    lcb.sr.gather(year)
-	    .map(lcb.sr.maskCFmask)
-	    .map(lcb.sr.harmonize)
-	    .map(lcb.sr.addBandNDVI)
-	    .select('NDVI')
+      ee.ImageCollection(
+        lcb.sr.gather(year)
+        .map(lcb.sr.maskCFmask)
+        .map(lcb.sr.harmonize)
+        .map(lcb.sr.addBandNDVI)
+        .select('NDVI')
 	  )
     );
   })
