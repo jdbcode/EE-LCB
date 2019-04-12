@@ -36,7 +36,7 @@ function initSearch() {
     this.ref('id');
     this.field('title', { boost: 20 });
     this.field('tags', { boost: 20 });
-    //this.field('content', { boost: 10 });
+    this.field('content', { boost: 10 });
     //this.field('url');
   });
 
