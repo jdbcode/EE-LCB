@@ -400,6 +400,7 @@ var colMasked = col.map(lcb.sr.addBandNDMI);
 print(colMasked);
 ```
 
+--------------------------------------------------------------------------------------------
 
 ## Corrections
 
