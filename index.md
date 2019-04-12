@@ -2,6 +2,8 @@
 title: Welcome
 ---
 
+**This site is under construction.**
+
 <img src='https://jdbcode.github.io/EE-LCB/assets/images/ee-lcb-logo.svg'>
 
 ## Earth Engine Landsat Collection Builder
@@ -65,8 +67,6 @@ There is a need to move past everyone writing essentially the same processing sc
 ways before getting to analyses. Let's get to the good stuff already! 
 
 ![TC brightness change](https://jdbcode.github.io/EE-LCB/assets/images/brtnss_change_banner.jpg)
-
-**This site is under construction.**
 
 ---
 
