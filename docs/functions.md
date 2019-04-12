@@ -219,7 +219,7 @@ Removes images included in 'exclude' property of the collection properties dicti
 
 | Param  | Type | Description |
 | :- | :- | :- |
-| col | `ee.image` | A Landsat collection |
+| col | `ee.ImageCollection` | A Landsat collection |
 | props.exclude | `list` | A list of Landsat `system:index` strings |
 
 Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
@@ -234,6 +234,40 @@ var col = lcb.sr.getLT05col();
 print(col);
 var colExclude = lcb.sr.removeImageList(col);
 print(colExclude);
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.removeFillers(col)
+
+&#10551; `ee.ImageCollection`
+
+Removes images filled in by the `gather` function for years where no images existed between the 
+dates provided in the collection properties dictionary. Performs a filter on the 'filler' property
+added to images by the `gather` function.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat collection |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+lcb.setProps({
+  startYear: 1984,
+  endYear: 1985,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LT05'],
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+});
+
+var col = lcb.sr.gather(1984).merge(lcb.sr.gather(1985));
+print('Collection w/  filler size: '+col.size().getInfo());
+var colNoFiller = lcb.sr.removeFillers(col);
+print('Collection wo/ filler size: '+colNoFiller.size().getInfo());
 ```
 
 --------------------------------------------------------------------------------------------
@@ -457,7 +491,24 @@ print(colMasked);
 
 --------------------------------------------------------------------------------------------
 
-### sr.countValid
+### sr.countValid(col)
+
+&#10551; `ee.Image`
+
+Reduce an image collection to the number of valid, non-masked pixels.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat image collection |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var col = lcb.sr.getL578col().map(lcb.sr.maskCFmask);
+var nValid = lcb.sr.countValid(col);
+Map.addLayer(nValid, {min:1, max:3});
+```
 
 ## Composite functions
 
