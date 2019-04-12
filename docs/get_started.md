@@ -106,6 +106,13 @@ If you want to "reduce" an entire collection, use the base
 API collection reduction functions like `col.reduce(ee.Reducer.Mean())`
 
 
+## Landsat
+
+A survival guide to Landsat preprocessing
+https://esajournals.onlinelibrary.wiley.com/doi/pdf/10.1002/ecy.1730
+
+Current status of Landsat program, science, and applications
+https://www.sciencedirect.com/science/article/pii/S0034425719300707
 
 
 
