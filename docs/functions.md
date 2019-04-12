@@ -17,9 +17,9 @@ nav_order: 3
 
 ## Set properties
 
-### setProps
+### setProps(colProps)
 
-> setProps(colProps) ⇒ `dictionary`
+&#10551; `dictionary`
 
 Updates the "props" global dictionary with desired collection properties. Will print the
 resulting "props" dictionary to the console.
