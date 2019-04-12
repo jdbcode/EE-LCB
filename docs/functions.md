@@ -238,7 +238,7 @@ print(colExclude);
 
 --------------------------------------------------------------------------------------------
 
-### sr.removeFillers(col)
+### sr.removeImageFiller(col)
 
 &#10551; `ee.ImageCollection`
 
@@ -266,7 +266,7 @@ lcb.setProps({
 
 var col = lcb.sr.gather(1984).merge(lcb.sr.gather(1985));
 print('Collection w/  filler size: '+col.size().getInfo());
-var colNoFiller = lcb.sr.removeFillers(col);
+var colNoFiller = lcb.sr.removeImageFiller(col);
 print('Collection wo/ filler size: '+colNoFiller.size().getInfo());
 ```
 
