@@ -64,10 +64,7 @@ provide consistency and ease of accomplishment for processing steps of other dat
 There is a need to move past everyone writing essentially the same processing scripts one hundred different 
 ways before getting to analyses. Let's get to the good stuff already! 
 
-<img src='https://jdbcode.github.io/EE-LCB/assets/images/ee-lcb-logo.svg'>
-
 ![TC brightness change](https://jdbcode.github.io/EE-LCB/assets/images/brtnss_change_banner.jpg)
-
 
 **This site is under construction.**
 
