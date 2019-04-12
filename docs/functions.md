@@ -90,36 +90,6 @@ var col = lcb.sr.gather()
 
 --------------------------------------------------------------------------------------------
 
-### sr.harmonize(img)
-
-&#10551; `ee.Image`
-
-Spectrally harmonize Landsat 5 and 7 to 8 or vise versa.
-
-| Param  | Type | Description |
-| :- | :- | :- |
-| props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
-
-Example: apply to ee.Image. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var img = lcb.sr.getLT05img();
-var imgHarmonized = lcb.sr.harmonize(img);
-print(img);
-```
-
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-var col = lcb.sr.getL578col()
-var colHarmonized = col.map(lcb.sr.harmonize);                     
-print(colHarmonized);
-```
-
---------------------------------------------------------------------------------------------
-
 ### sr.standardizeBands(img)
 
 &#10551; `ee.Image`
@@ -430,8 +400,37 @@ print(colMasked);
 ```
 
 
-
 ## Correction functions
+
+--------------------------------------------------------------------------------------------
+
+### sr.harmonize(img)
+
+&#10551; `ee.Image`
+
+Spectrally harmonize Landsat 5 and 7 to 8 or vise versa.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLT05img();
+var imgHarmonized = lcb.sr.harmonize(img);
+print(img);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getL578col()
+var colHarmonized = col.map(lcb.sr.harmonize);                     
+print(colHarmonized);
+```
 
 ### ??.correctTopoMinearat
 
