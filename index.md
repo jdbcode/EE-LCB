@@ -26,20 +26,20 @@ lcb.setProps({
   sensors: ['LT05', 'LE07', 'LC08'],
   cfmask: ['cloud', 'shadow'],
   harmonizeTo: 'LC08',
-  aoi: ee.Geometry.Point([-122.8848, 43.7929])
+  aoi: ee.Geometry.Point([-110.438, 44.609])
 });
 
-var annualMeanSummerNDVI = ee.ImageCollection.fromImages(
-  ee.List.sequence(lcb.props.startYear, lcb.props.endYear)
-  .map(function(year){
-    return lcb.sr.mosaicMean(
-      ee.ImageCollection(
-        lcb.sr.gather(year)
-        .map(lcb.sr.maskCFmask)
-        .map(lcb.sr.harmonize)
-        .map(lcb.sr.addBandNDVI)
-        .select('NDVI')));})
-);
+var steps = function(year){
+  var col = lcb.sr.gather(year)
+    .map(lcb.sr.maskCFmask)
+    .map(lcb.sr.harmonize)
+    .map(lcb.sr.addBandNDVI)
+    .select('NDVI');
+  return lcb.sr.mosaicMean(col);
+};
+
+var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var annualSummerMeanNDVI = ee.ImageCollection.fromImages(years.map(steps));
 ```
 
 This examples completes the following steps:
