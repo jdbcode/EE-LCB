@@ -29,7 +29,7 @@ lcb.setProps({
   aoi: ee.Geometry.Point([-110.438, 44.609])
 });
 
-var steps = function(year){
+var plan = function(year){
   var col = lcb.sr.gather(year)
     .map(lcb.sr.maskCFmask)
     .map(lcb.sr.harmonize)
@@ -39,7 +39,7 @@ var steps = function(year){
 };
 
 var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
-var annualSummerMeanNDVI = ee.ImageCollection.fromImages(years.map(steps));
+var annualSummerMeanNDVI = ee.ImageCollection.fromImages(years.map(plan));
 ```
 
 This examples completes the following steps:
