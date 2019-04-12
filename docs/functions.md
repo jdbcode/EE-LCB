@@ -17,7 +17,9 @@ nav_order: 3
 
 ## Set properties
 
-### setProps(colProps)
+### setProps
+
+`setProps(colProps)` ⇒ `dictionary`
 
 &#10551; `dictionary`
 
