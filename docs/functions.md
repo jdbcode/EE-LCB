@@ -42,10 +42,11 @@ var colProps = {
 lcb.setProps(colProps)
 ```
 
-
 --------------------------------------------------------------------------------------------
 
-## Collection building functions
+## Collection building
+
+--------------------------------------------------------------------------------------------
 
 ### sr.gather() 
 
@@ -242,7 +243,7 @@ print('Collection wo/ filler size: '+colNoFiller.size().getInfo());
 
 --------------------------------------------------------------------------------------------
 
-## Transformation functions
+## Transformations
 
 --------------------------------------------------------------------------------------------
 
@@ -400,7 +401,7 @@ print(colMasked);
 ```
 
 
-## Correction functions
+## Corrections
 
 --------------------------------------------------------------------------------------------
 
@@ -432,13 +433,13 @@ var colHarmonized = col.map(lcb.sr.harmonize);
 print(colHarmonized);
 ```
 
-### ??.correctTopoMinearat
-
-### xx.correctSLCoff
-
+--------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------
 
-## Masking functions
+## Masking
+
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
 ### sr.maskCFmask(img)
 
@@ -477,16 +478,9 @@ var colMasked = col.map(lcb.sr.maskCFmask);
 print(colMasked);
 ```
 
-
-
-
-### sr.maskOutliers*
-
-### sr.maskDiff
-
 --------------------------------------------------------------------------------------------
 
-## Collection assessment functions
+## Collection assessment
 
 --------------------------------------------------------------------------------------------
 
@@ -509,7 +503,7 @@ var nValid = lcb.sr.countValid(col);
 Map.addLayer(nValid, {min:1, max:3});
 ```
 
-## Composite functions
+## Composite
 
 ### sr.mosaicMean(col)
 
@@ -660,15 +654,19 @@ print(colMos);
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicTargetDOY
+### xx.mosaicTargetDOY - TODO
+
+--------------------------------------------------------------------------------------------
 
 ## Visualization
 
-### sr.visualize654
+--------------------------------------------------------------------------------------------
+
+### sr.visualize654(img)
 
 &#10551; `ee.Image`
 
-Creates a 8-bit RGB visualization image from Landsat 8 equivlent bands 6, 5, and 4 mapped to 
+Creates a 8-bit RGB visualization image from Landsat 8-equivalent bands 6, 5, and 4 mapped to 
 red, green, and blue, respectively.
 
 Example: apply to ee.Image
@@ -688,14 +686,89 @@ var rgbCol = lcb.sr.getLC08col()
 Map.addLayer(rgbCol.first());
 ```
 
+--------------------------------------------------------------------------------------------
 
-### sr.visualize543
+### sr.visualize543(img)
 
-### sr.visualize432
+&#10551; `ee.Image`
 
-### sr.visualizeTC
+Creates a 8-bit RGB visualization image from Landsat 8-equivalent bands 5, 4, and 3 mapped to 
+red, green, and blue, respectively.
+
+Example: apply to ee.Image
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbImg = lcb.sr.visualize543(lcb.sr.getLC08img();)
+Map.addLayer(rgbImg);
+```
+
+Example: apply to ee.ImageCollection
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbCol = lcb.sr.getLC08col()
+                   .map(lcb.sr.visualize543)
+Map.addLayer(rgbCol.first());
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.visualize432(img)
+
+&#10551; `ee.Image`
+
+Creates a 8-bit RGB visualization image from Landsat 8-equivalent bands 4, 3, and 2 mapped to 
+red, green, and blue, respectively.
+
+Example: apply to ee.Image
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbImg = lcb.sr.visualize432(lcb.sr.getLC08img();)
+Map.addLayer(rgbImg);
+```
+
+Example: apply to ee.ImageCollection
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbCol = lcb.sr.getLC08col()
+                   .map(lcb.sr.visualize432)
+Map.addLayer(rgbCol.first());
+```
+
+--------------------------------------------------------------------------------------------
+
+### sr.visualizeTC(img)
+
+&#10551; `ee.Image`
+
+Creates a 8-bit RGB visualization image from Landsat Tasseled Cap transformation brightness, 
+greenness, wetness mapped to red, green, and blue, respectively.
+
+Example: apply to ee.Image
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbImg = lcb.sr.visualizeTC(lcb.sr.getLC08img();)
+Map.addLayer(rgbImg);
+```
+
+Example: apply to ee.ImageCollection
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var rgbCol = lcb.sr.getLC08col()
+                   .map(lcb.sr.visualizeTC)
+Map.addLayer(rgbCol.first());
+```
+
+--------------------------------------------------------------------------------------------
 
 ## Example datasets
+
+--------------------------------------------------------------------------------------------
 
 ### sr.getLT05img()
 
