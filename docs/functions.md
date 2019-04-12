@@ -243,6 +243,83 @@ print('Collection wo/ filler size: '+colNoFiller.size().getInfo());
 
 --------------------------------------------------------------------------------------------
 
+## Corrections
+
+--------------------------------------------------------------------------------------------
+
+### sr.harmonize(img)
+
+&#10551; `ee.Image`
+
+Spectrally harmonize Landsat 5 and 7 to 8 or vise versa.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLT05img();
+var imgHarmonized = lcb.sr.harmonize(img);
+print(img);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getL578col()
+var colHarmonized = col.map(lcb.sr.harmonize);                     
+print(colHarmonized);
+```
+
+--------------------------------------------------------------------------------------------
+
+## Masking
+
+--------------------------------------------------------------------------------------------
+
+### sr.maskCFmask(img)
+
+&#10551; `ee.Image`
+
+Applies CFmask cloud and shadow mask to a Landsat surface reflectance image.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+| props.mask | `list` | A list of elements to be masked out. Options:<br> 'cloud', 'shadow', 'water', 'snow' |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+	mask: ['cloud', 'shadow', 'water', 'snow']
+};
+lcb.setProps(colProps);
+var img = lcb.sr.getLC08img();
+var imgMasked = lcb.sr.maskCFmask(img);
+print(imgMasked);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+	mask: ['cloud', 'shadow', 'water', 'snow']
+};
+lcb.setProps(colProps);
+var col = lcb.sr.getLC08col();
+var colMasked = col.map(lcb.sr.maskCFmask);
+print(colMasked);
+```
+
+--------------------------------------------------------------------------------------------
+
 ## Transformations
 
 --------------------------------------------------------------------------------------------
@@ -397,83 +474,6 @@ Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
 var col = lcb.sr.getLC08col();
 var colMasked = col.map(lcb.sr.addBandNDMI);
-print(colMasked);
-```
-
---------------------------------------------------------------------------------------------
-
-## Corrections
-
---------------------------------------------------------------------------------------------
-
-### sr.harmonize(img)
-
-&#10551; `ee.Image`
-
-Spectrally harmonize Landsat 5 and 7 to 8 or vise versa.
-
-| Param  | Type | Description |
-| :- | :- | :- |
-| props.harmonizeTo | `string` | Options: 'LE07', 'LC08' |
-
-Example: apply to ee.Image. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var img = lcb.sr.getLT05img();
-var imgHarmonized = lcb.sr.harmonize(img);
-print(img);
-```
-
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-var col = lcb.sr.getL578col()
-var colHarmonized = col.map(lcb.sr.harmonize);                     
-print(colHarmonized);
-```
-
---------------------------------------------------------------------------------------------
-
-## Masking
-
---------------------------------------------------------------------------------------------
-
-### sr.maskCFmask(img)
-
-&#10551; `ee.Image`
-
-Applies CFmask cloud and shadow mask to a Landsat surface reflectance image.
-
-| Param  | Type                | Description  |
-| ------ | ------------------- | ------------ |
-| img  | `ee.Image`| An ee.Image object  |
-| props.mask | `list` | A list of elements to be masked out. Options:<br> 'cloud', 'shadow', 'water', 'snow' |
-
-Example: apply to ee.Image. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var colProps = {
-	mask: ['cloud', 'shadow', 'water', 'snow']
-};
-lcb.setProps(colProps);
-var img = lcb.sr.getLC08img();
-var imgMasked = lcb.sr.maskCFmask(img);
-print(imgMasked);
-```
-
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var colProps = {
-	mask: ['cloud', 'shadow', 'water', 'snow']
-};
-lcb.setProps(colProps);
-var col = lcb.sr.getLC08col();
-var colMasked = col.map(lcb.sr.maskCFmask);
 print(colMasked);
 ```
 
