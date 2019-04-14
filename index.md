@@ -55,9 +55,9 @@ var annualSummerMeanNDVI = ee.ImageCollection.fromImages(years.map(plan));
 
 This examples completes the following steps:
 
-1. Gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August annually; 
+1. Gathers Landsat surface reflectance images from TM, ETM+ and OLI for months July through August annually 
 2. Masks clouds and cloud shadows
-3. Standardizes TM and ETM+ images to OLI;
+3. Harmonizes TM and ETM+ images to OLI
 4. Calculates NDVI
 5. Makes a collection composed of annual mean NDVI composites
 

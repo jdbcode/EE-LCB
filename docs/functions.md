@@ -21,16 +21,18 @@ nav_order: 3
 
 &#10551; `dictionary`
 
-Updates the "props" global dictionary with desired collection properties. Will print the
-resulting "props" dictionary to the console.
+Updates the "props" global dictionary with desired collection properties. Upon execution it 
+will print the current state of the "props" dictionary to the console. The "props" dictionary is 
+accessible as `lcb.props`.
 
 | Param  | Type | Description |
 | :- | :- | :- |
 | colProps | `dictionary` | A dictionary specifying desired collection properties |
 
-Example. [Try Live](http://example.com/)
+Example. [Try Live](https://code.earthengine.google.com/5ada6a4d9f37a0476c7e4c1ee1882d3b)
 {: .lh-tight .fs-2 }
 ```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var colProps = {
   startYear: 2013,
   endYear: 2018,
@@ -38,8 +40,8 @@ var colProps = {
   endDate: '09-01',
   sensors: ['LC08'],
   aoi: ee.Geometry.Point([-110.438, 44.609])
-}
-lcb.setProps(colProps)
+};
+lcb.setProps(colProps);
 ```
 
 --------------------------------------------------------------------------------------------
@@ -48,17 +50,21 @@ lcb.setProps(colProps)
 
 --------------------------------------------------------------------------------------------
 
-### sr.gather() 
+### sr.gather(*year*) 
 
 &#10551; `ee.ImageCollection`
 
 Gathers Landsat images into a collection. In the case where *LC08* images are included with either *LT05* or *LE07* images,
 all images will be standardized to include only reflectance and CFmask *pixel_qa* bands 
 and band names will match the *LC08* convention. In all other cases the original band arrangement and names 
-will remain.
+will remain. If the optional *year* argument is provided and no images are found to match the collection properties,
+a blank filler image matching the bands of an actual image will be included in the returned collection. This is done
+to avoid errors when making mosaics from annual collections. These filler images and their derivitives can be removed
+with the `sr.removeFiller` function. Adds a number of properties to each image - TODO: list them. 
 
 | Param  | Type | Description |
 | :- | :- | :- |
+| year | `int` | A year for which to filter images for a collection. When this is provided, the props.startYear and props.endYear are ignored and *year* used in their place |
 | props.startYear | `int` | Minimum year in the desired range of the collection |
 | props.endYear | `int` | Maximum year in the desired range of the collection |
 | props.startDate | `string` | Minimum calendar date of the collection as 'mm-dd' (inclusive) |
@@ -66,28 +72,38 @@ will remain.
 | props.aoi | `ee.Geometry` | Area of interest used to filter image collection by bounds |
 | props.sensors: | `list` | A list of the sensors to include images from. Options: 'LT05, 'LE07', 'LC08' |
 
-Example. [Try Live](http://example.com/)
+Example: optional "year" argument not provided. [Try Live](https://code.earthengine.google.com/fa2007d24c69dbf13799d56b271146c9)
 {: .lh-tight .fs-2 }
 ```js
-// load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-
-// define collection properties
 var colProps = {
   startYear: 2013,
   endYear: 2018,
   startDate: '07-01',
   endDate: '09-01',
-  aoi: ee.Geometry.Point([-110.438, 44.609])
   sensors: ['LC08'],
-}
-
-// set collection properties
-lcb.setProps(colProps)
-
-// gather images following collection properties into an ee.ImageCollection
-var col = lcb.sr.gather()
+  aoi: ee.Geometry.Point([-110.438, 44.609]),
+};
+lcb.setProps(colProps);
+var col = lcb.sr.gather();
+print(col);
 ```
+
+Example: optional "year" argument provided. [Try Live](https://code.earthengine.google.com/0b7748bc76efa70478a93c55dd2a0138)
+{: .lh-tight .fs-2 }
+```
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LC08'],
+  aoi: ee.Geometry.Point([-110.438, 44.609]),
+};
+lcb.setProps(colProps);
+var col = lcb.sr.gather(2013);
+print(col);
+```
+
 
 --------------------------------------------------------------------------------------------
 
