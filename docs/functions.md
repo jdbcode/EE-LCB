@@ -64,7 +64,7 @@ with the `sr.removeFiller` function. Adds a number of properties to each image -
 
 | Param  | Type | Description |
 | :- | :- | :- |
-| year | `int` | A year for which to filter images for a collection. When this is provided, the props.startYear and props.endYear are ignored and *year* used in their place |
+| year | `int` | A year to filter images for a collection. When this is provided, the props.startYear and props.endYear are ignored and *year* used in their place |
 | props.startYear | `int` | Minimum year in the desired range of the collection |
 | props.endYear | `int` | Maximum year in the desired range of the collection |
 | props.startDate | `string` | Minimum calendar date of the collection as 'mm-dd' (inclusive) |
@@ -91,7 +91,7 @@ print(col);
 
 Example: optional "year" argument provided. [Try Live](https://code.earthengine.google.com/0b7748bc76efa70478a93c55dd2a0138)
 {: .lh-tight .fs-2 }
-```
+```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 var colProps = {
   startDate: '07-01',
@@ -103,6 +103,18 @@ lcb.setProps(colProps);
 var col = lcb.sr.gather(2013);
 print(col);
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --------------------------------------------------------------------------------------------
