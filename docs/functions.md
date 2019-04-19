@@ -221,7 +221,7 @@ Removes images included in 'exclude' property of the collection properties dicti
 | col | `ee.ImageCollection` | A Landsat collection |
 | props.exclude | `list` | A list of Landsat `system:index` strings |
 
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+Example: apply to ee.ImageCollection. [Try Live](https://code.earthengine.google.com/0ee3aa54818f4e6e67721f514ed9aba2)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -704,7 +704,7 @@ Example: apply to ee.Image
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var rgbImg = lcb.sr.visualize654(lcb.sr.getLC08img();)
+var rgbImg = lcb.sr.visualize654(lcb.sr.getLC08img());
 Map.addLayer(rgbImg);
 ```
 
@@ -730,7 +730,7 @@ Example: apply to ee.Image
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var rgbImg = lcb.sr.visualize543(lcb.sr.getLC08img();)
+var rgbImg = lcb.sr.visualize543(lcb.sr.getLC08img());
 Map.addLayer(rgbImg);
 ```
 
@@ -756,7 +756,7 @@ Example: apply to ee.Image
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var rgbImg = lcb.sr.visualize432(lcb.sr.getLC08img();)
+var rgbImg = lcb.sr.visualize432(lcb.sr.getLC08img());
 Map.addLayer(rgbImg);
 ```
 
@@ -782,7 +782,7 @@ Example: apply to ee.Image
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var rgbImg = lcb.sr.visualizeTC(lcb.sr.getLC08img();)
+var rgbImg = lcb.sr.visualizeTC(lcb.sr.getLC08img());
 Map.addLayer(rgbImg);
 ```
 
