@@ -105,47 +105,6 @@ print(col);
 ```
 
 
---------------------------------------------------------------------------------------------
-
-### sr.resample(img)
-
-&#10551; `ee.Image`
-
-Resamples images by either bilinear or bicubic interpolation. It does not apply resampling to any
-QA bands.
-
-| Param  | Type | Description |
-| :- | :- | :- |
-| img | `ee.Image` | A Landsat surface reflectance image |
-| props.resample | `String` | Interpolation mode. Options: 'bilinear', 'bicubic'
-
-Example: apply to ee.Image. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
-var img = lcb.sr.getLC08img();
-var imgResample = lcb.sr.resample(img);
-print(imgResample);
-```
-
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
-{: .lh-tight .fs-2 }
-```js
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-var col = lcb.sr.getLC08col();
-var colResample = col.map(lcb.sr.resample);                     
-print(colResample);
-```
-
-
-
-
-
-
-
-
-
-
 
 --------------------------------------------------------------------------------------------
 
@@ -298,6 +257,40 @@ print('Collection w/  filler size: '+col.size().getInfo());
 var colNoFiller = lcb.sr.removeImageFiller(col);
 print('Collection wo/ filler size: '+colNoFiller.size().getInfo());
 ```
+
+
+--------------------------------------------------------------------------------------------
+
+### sr.resample(img)
+
+&#10551; `ee.Image`
+
+Resamples images by either bilinear or bicubic interpolation. It does not apply resampling to any
+QA bands.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| img | `ee.Image` | A Landsat surface reflectance image |
+| props.resample | `String` | Interpolation mode. Options: 'bilinear', 'bicubic'
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLC08img();
+var imgResample = lcb.sr.resample(img);
+print(imgResample);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getLC08col();
+var colResample = col.map(lcb.sr.resample);                     
+print(colResample);
+```
+
 
 --------------------------------------------------------------------------------------------
 
