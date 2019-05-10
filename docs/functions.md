@@ -371,6 +371,55 @@ var colMasked = col.map(lcb.sr.maskCFmask);
 print(colMasked);
 ```
 
+### sr.maskBuffer(img)
+
+&#10551; `ee.Image`
+
+Adds a circular buffer to the existing mask of a given image.
+
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| img  | `ee.Image`| An ee.Image object  |
+| props.maskBuffer | `integer` | buffer width in meters |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+	maskBuffer: 150
+};
+lcb.setProps(colProps);
+var img = lcb.sr.getLC08img();
+var imgMasked = lcb.sr.maskCFmask(img);
+var imgMaskedBuffer = lcb.sr.maskBuffer(imgMasked);
+
+Map.centerObject(imgMasked, 11);
+Map.addLayer(lcb.sr.visualize654(imgMaskedBuffer), {}, 'Buffered Mask');
+Map.addLayer(lcb.sr.visualize654(imgMasked), {}, 'Mask');
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var colProps = {
+  mask: ['cloud', 'shadow', 'water', 'snow'],
+	maskBuffer: 150
+};
+lcb.setProps(colProps);
+var col = lcb.sr.getLC08col();
+var colMaskedBuffer = col.map(lcb.sr.maskCFmask)
+                         .map(lcb.sr.maskBuffer);
+
+Map.centerObject(colMaskedBuffer.first(), 11);
+Map.addLayer(lcb.sr.visualize654(colMaskedBuffer.first()), {}, 'Buffered Mask');
+```
+
+
+
+
+
 --------------------------------------------------------------------------------------------
 
 ## **Transformations**
