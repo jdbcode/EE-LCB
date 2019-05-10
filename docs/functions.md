@@ -382,7 +382,7 @@ Adds a circular buffer to the existing mask of a given image.
 | img  | `ee.Image`| An ee.Image object  |
 | props.maskBuffer | `integer` | buffer width in meters |
 
-Example: apply to ee.Image. [Try Live](http://example.com/)
+Example: apply to ee.Image. [Try Live](https://code.earthengine.google.com/a418d7de29b7b9c2c49f8219243610cc)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -399,7 +399,7 @@ Map.addLayer(lcb.sr.visualize654(imgMaskedBuffer), {}, 'Buffered Mask');
 Map.addLayer(lcb.sr.visualize654(imgMasked), {}, 'Mask');
 ```
 
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+Example: apply to ee.ImageCollection. [Try Live](https://code.earthengine.google.com/f52014be081882fa3d29131953eab4f3)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -415,10 +415,6 @@ var colMaskedBuffer = col.map(lcb.sr.maskCFmask)
 Map.centerObject(colMaskedBuffer.first(), 11);
 Map.addLayer(lcb.sr.visualize654(colMaskedBuffer.first()), {}, 'Buffered Mask');
 ```
-
-
-
-
 
 --------------------------------------------------------------------------------------------
 
