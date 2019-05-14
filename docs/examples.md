@@ -295,6 +295,10 @@ Map.addLayer(meanNDVIcol);
 
 --------------------------------------------------------------------------------------------
 
+
+## Collection Assessment
+
+
 ### Make an annual cloud-masked collection and count the number of clear pixels per year per pixel without counting row overlap
 
 Example [Try Live](https://code.earthengine.google.com/752e31cc1f81eb4f4b3db10b367505c5)
