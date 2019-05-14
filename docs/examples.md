@@ -336,14 +336,14 @@ var plan = function(year){
 
 // apply the processing plan to the range of years
 var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
-var nValid = ee.ImageCollection.fromImages(years.map(plan));
+var nValidCol = ee.ImageCollection.fromImages(years.map(plan));
 
 // subset one year to display
-var thisYear = nValid.filter(ee.Filter.eq('year', 2013));
+var nValid = nValidCol.filter(ee.Filter.eq('year', 2013));
 
 // show on map
 Map.centerObject(lcb.props.aoi, 7);
-Map.addLayer(thisYear, {
+Map.addLayer(nValid, {
   palette:['#2C105C', '#711F81', '#B63679', '#EE605E', '#FDAE78'], 
   min:1, 
   max:25},
@@ -353,5 +353,121 @@ Map.addLayer(thisYear, {
 
 
 
+### Get mean count of number of clear pixels per year per pixel without counting row overlap within a collection
 
+Example [Try Live](https://code.earthengine.google.com/a21e3a8b52216da3011bd879d899894c)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define an AOI
+var geometry = ee.Geometry.Polygon(
+  [[[-112.71220703124999, 45.2238642695279],
+    [-112.71220703124999, 44.2405035184126],
+    [-108.64726562499999, 44.2405035184126],
+    [-108.64726562499999, 45.2238642695279]]], 
+    null, false
+);
+
+// define collection properties 
+var colProps = {
+  startYear: 2012,
+  endYear: 2018,
+  startDate: '06-20',
+  endDate: '09-20',
+  sensors: ['LE07', 'LC08'],
+  cfmask: ['cloud', 'shadow', 'snow'],
+  harmonizeTo: 'LC08',
+  aoi: geometry,
+};
+
+// set collection properties
+lcb.setProps(colProps);
+
+// make a processing plan
+var plan = function(year){
+  var col = lcb.sr.gather(year)
+    .map(lcb.sr.maskCFmask);
+  return lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('year', year);
+};
+
+// apply the processing plan to the range of years
+var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var nValidCol = ee.ImageCollection.fromImages(years.map(plan));
+
+// reduce collection of nValid pixels to mean
+var nValid = nValidCol.reduce(ee.Reducer.mean());
+
+// show on map
+Map.centerObject(lcb.props.aoi, 7);
+Map.addLayer(nValid, {
+  palette:['#2C105C', '#711F81', '#B63679', '#EE605E', '#FDAE78'], 
+  min:1, 
+  max:25},
+  'nValid'
+);
+```
+
+
+### Get an annual time series chart of N clear pixels for region summarized by percentiles
+
+Example [Try Live](https://code.earthengine.google.com/9f1974309259da29ffe35a2cc42a05c7)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define an AOI
+var geometry = ee.Geometry.Polygon(
+  [[[-112.71220703124999, 46.2238642695279],
+    [-112.71220703124999, 44.2405035184126],
+    [-108.64726562499999, 44.2405035184126],
+    [-108.64726562499999, 46.2238642695279]]], 
+    null, false
+);
+
+// define collection properties/ set 
+var colProps = {
+  startYear: 1984,
+  endYear: 2018,
+  startDate: '06-20',
+  endDate: '09-20',
+  sensors: ['LT05', 'LE07', 'LC08'],
+  cfmask: ['cloud', 'shadow', 'snow'],
+  harmonizeTo: 'LC08',
+  aoi: geometry,
+};
+
+// set collection properties
+lcb.setProps(colProps);
+
+// make a processing plan
+var plan = function(year){
+  var col = lcb.sr.gather(year)
+    .map(lcb.sr.maskCFmask);
+  var nValid = lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('year', year);
+  var nValidSummary = nValid.rename(['nValid'])
+    .reduceRegion({
+      reducer:ee.Reducer.percentile([25,50,75]),
+      geometry:lcb.props.aoi,
+      scale:300,
+      crs:'EPSG:5070',
+      bestEffort:true,
+      maxPixels:1e13,
+      tileScale:3}
+    );
+  
+  return ee.Feature(null, nValidSummary)
+    .set('Year', ee.String(ee.Number(year).toShort()));
+};
+
+// apply the processing plan to the range of years
+var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var nValidSummary = ee.FeatureCollection(years.map(plan));
+
+// show results
+print(nValidSummary);
+print(ui.Chart.feature.byFeature(nValidSummary, 'Year', ['nValid_p25', 'nValid_p50', 'nValid_p75']));
+```
 
