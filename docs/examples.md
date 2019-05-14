@@ -293,5 +293,65 @@ Map.addLayer(meanNDVIcol);
 
 
 
+--------------------------------------------------------------------------------------------
+
+### Make an annual cloud-masked collection and count the number of clear pixels per year per pixel without counting row overlap
+
+Example [Try Live](https://code.earthengine.google.com/752e31cc1f81eb4f4b3db10b367505c5)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// define an AOI
+var geometry = ee.Geometry.Polygon(
+  [[[-112.71220703124999, 45.2238642695279],
+    [-112.71220703124999, 44.2405035184126],
+    [-108.64726562499999, 44.2405035184126],
+    [-108.64726562499999, 45.2238642695279]]], 
+    null, false
+);
+
+// define collection properties 
+var colProps = {
+  startYear: 2012,
+  endYear: 2018,
+  startDate: '06-20',
+  endDate: '09-20',
+  sensors: ['LE07', 'LC08'],
+  cfmask: ['cloud', 'shadow', 'snow'],
+  harmonizeTo: 'LC08',
+  aoi: geometry,
+};
+
+// set collection properties
+lcb.setProps(colProps);
+
+// make a processing plan
+var plan = function(year){
+  var col = lcb.sr.gather(year)
+    .map(lcb.sr.maskCFmask);
+  return lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('year', year);
+};
+
+// apply the processing plan to the range of years
+var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var nValid = ee.ImageCollection.fromImages(years.map(plan));
+
+// subset one year to display
+var thisYear = nValid.filter(ee.Filter.eq('year', 2013));
+
+// show on map
+Map.centerObject(lcb.props.aoi, 7);
+Map.addLayer(thisYear, {
+  palette:['#2C105C', '#711F81', '#B63679', '#EE605E', '#FDAE78'], 
+  min:1, 
+  max:25},
+  'nValid'
+);
+```
+
+
+
 
 
