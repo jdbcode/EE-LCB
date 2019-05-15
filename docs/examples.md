@@ -416,9 +416,13 @@ Map.addLayer(nValid, {
 
 ### Get an annual time series chart of N clear pixels for region summarized by percentiles
 
-Example [Try Live](https://code.earthengine.google.com/9f1974309259da29ffe35a2cc42a05c7)
+Example [Try Live](https://code.earthengine.google.com/314519292eed56fae4ff32240fcc8f7f)
 {: .lh-tight .fs-2 }
 ```js
+/*
+https://jdbcode.github.io/EE-LCB/docs/examples.html
+*/
+
 // load EE-LCB module
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 
@@ -450,7 +454,7 @@ lcb.setProps(colProps);
 var plan = function(year){
   var col = lcb.sr.gather(year)
     .map(lcb.sr.maskCFmask);
-  var nValid = lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('Year', year);
+  var nValid = lcb.sr.countValid(lcb.ls.mosaicPath(col));
   var nValidSummary = nValid.rename(['nValid'])
     .reduceRegion({
       reducer:ee.Reducer.percentile([25,50,75]),
@@ -473,4 +477,5 @@ var nValidSummary = ee.FeatureCollection(years.map(plan));
 // show results
 print(nValidSummary);
 print(ui.Chart.feature.byFeature(nValidSummary, 'Year', ['nValid_p25', 'nValid_p50', 'nValid_p75']));
+Map.addLayer(geometry);
 ```
