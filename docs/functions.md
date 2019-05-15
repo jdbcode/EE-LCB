@@ -427,7 +427,10 @@ Map.addLayer(lcb.sr.visualize654(colMaskedBuffer.first()), {}, 'Buffered Mask');
 &#10551; `ee.Image`
 
 Applies the Tasseled Cap transformation to a Landsat surface reflectance image and adds bands:
-'TCB', 'TCG', 'TCW', 'TCA'.
+'TCB', 'TCG', 'TCW', 'TCA'. Values for 'TCB', 'TCG', 'TCW' are a derivation of the input
+image. If the image is not rescaled by the user, then the scale factor is 10,000. Values for
+TCA are degress between TCB and TCG scaled by 100.
+
 
 | Param  | Type                | Description  |
 | ------ | ------------------- | ------------ |
