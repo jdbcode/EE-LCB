@@ -450,7 +450,7 @@ lcb.setProps(colProps);
 var plan = function(year){
   var col = lcb.sr.gather(year)
     .map(lcb.sr.maskCFmask);
-  var nValid = lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('year', year);
+  var nValid = lcb.sr.countValid(lcb.ls.mosaicPath(col)).set('Year', year);
   var nValidSummary = nValid.rename(['nValid'])
     .reduceRegion({
       reducer:ee.Reducer.percentile([25,50,75]),
@@ -474,4 +474,3 @@ var nValidSummary = ee.FeatureCollection(years.map(plan));
 print(nValidSummary);
 print(ui.Chart.feature.byFeature(nValidSummary, 'Year', ['nValid_p25', 'nValid_p50', 'nValid_p75']));
 ```
-
