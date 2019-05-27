@@ -334,21 +334,24 @@ print(colHarmonized);
 &#10551; `ee.Image`
 
 This is an implementation of the Minnaert topo correction that models k for every pixel as a function of slope, 
-specific to each Landsat reflectance band. 
-User can supply the DEM, by default the program will use "USGS/GMTED2010". Extremely low illumination regions
-can result is values being set to 0 for all bands. Note that sun zenith and azimuth are held constant for given a image.
+specific to each Landsat reflectance band. User can supply the DEM, by default the program will use "USGS/GMTED2010". 
+Extremely low illumination regions can result is values being set to 0 for all bands. 
+Note that sun zenith and azimuth are held constant for given a image. Function calls sr.standardizeBand, which 
+standardizes image to include only reflectance and CFmask pixel_qa bands with names following the LC08 convention.
+The resulting image will therefore will contain only these bands.
   
 This is the paper from which the implementation was ported:
 > Ge, H., Lu, D., He, S., Xu, A., Zhou, G., & Du, H. (2008). Pixel-based Minnaert correction method for reducing topographic effects on a Landsat 7 ETM+ image. 
 > Photogrammetric Engineering & Remote Sensing, 74(11), 1343-1350. | 
 > https://orst.library.ingentaconnect.com/content/asprs/pers/2008/00000074/00000011/art00003?crawler=true&mimetype=application/pdf
 
+Changes image property: *topo_correction* from 'null' to 'minnaert'
 
 | Param  | Type | Description |
 | :- | :- | :- |
-| props.demMinnaert | `string` | Path to DEM. Default: USGS/GMTED2010 |
+| props.demMinnaert | `string` | Path to DEM. Default: 'USGS/GMTED2010' |
 
-Example: apply to ee.Image. [Try Live](http://example.com/)
+Example: apply to ee.Image. [Try Live](https://code.earthengine.google.com/3ebbd7514e5ab367782826d9df9e63ae)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
@@ -357,17 +360,14 @@ var imgTopoCorr = lcb.sr.topoCorrMinnaert(img);
 print(imgTopoCorr);
 ```
 
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+Example: apply to ee.ImageCollection. [Try Live](https://code.earthengine.google.com/1893aa3a278f419fe39318cd67d30675)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
-var col = lcb.sr.getL578col()
-var colHarmonized = col.map(lcb.sr.harmonize);                     
-print(colHarmonized);
+var col = lcb.sr.getLT05col();
+var colTopoCorr = col.map(lcb.sr.topoCorrMinnaert);                     
+print(colTopoCorr);
 ```
-
-
-
 
 --------------------------------------------------------------------------------------------
 
