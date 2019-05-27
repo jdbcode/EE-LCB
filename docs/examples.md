@@ -479,3 +479,62 @@ print(nValidSummary);
 print(ui.Chart.feature.byFeature(nValidSummary, 'Year', ['nValid_p25', 'nValid_p50', 'nValid_p75']));
 Map.addLayer(geometry);
 ```
+
+
+
+
+
+### Apply Minneart topographic correction to a Landsat 8 collection, make median composite and compare to the uncorrected version
+
+Example [Try Live](https://code.earthengine.google.com/2a404b2d26329ff5e2f9a79ae40c26e8)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+
+// set collection properties
+lcb.setProps({
+  startYear: 2016,
+  endYear: 2016,
+  startDate: '06-01',
+  endDate: '10-01',
+  cfmask: ['cloud', 'shadow'],
+  aoi: ee.Geometry.Polygon(
+        [[[-116.6314697265625, 50.69013508162937],
+          [-116.6314697265625, 49.26666845618003],
+          [-113.06915283203125, 49.26666845618003],
+          [-113.06915283203125, 50.69013508162937]]], null, false)
+});
+
+// make a cloud masked collection based on defined props
+var col = lcb.sr.gather()
+  .map(lcb.sr.maskCFmask);
+
+// apply Minnaert topo correction to images in collection
+var colFlat = col.map(lcb.sr.topoCorrMinnaert);
+
+// make a median composite from the original collection (+ vis)
+var imgMedian = lcb.sr.mosaicMedian(col);
+var imgVis = lcb.sr.visualize654(imgMedian);
+
+// make a median composite from the topo corrected collection (+ vis) 
+var imgMedianFlat = lcb.sr.mosaicMedian(colFlat);
+var imgVisFlat = lcb.sr.visualize654(imgMedianFlat);
+
+// compare the images with a slider
+Map.addLayer(imgVisFlat, {}, 'Flat');
+var linkedMap = ui.Map();
+linkedMap.addLayer(imgVis, {}, 'Original');
+var linker = ui.Map.Linker([ui.root.widgets().get(0), linkedMap]);
+var splitPanel = ui.SplitPanel({
+  firstPanel: linker.get(0),
+  secondPanel: linker.get(1),
+  orientation: 'horizontal',
+  wipe: true,
+  style: {stretch: 'both'}
+});
+ui.root.widgets().reset([splitPanel]);
+linkedMap.centerObject(lcb.props.aoi, 9);
+```
+
+
