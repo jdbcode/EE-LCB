@@ -484,7 +484,7 @@ Map.addLayer(geometry);
 
 
 
-### Apply Minneart topographic correction to a Landsat 8 collection, make median composite and compare to the uncorrected version
+### Apply Minnaert topographic correction to a Landsat 8 collection, make median composite and compare to the uncorrected version
 
 Example [Try Live](https://code.earthengine.google.com/2a404b2d26329ff5e2f9a79ae40c26e8)
 {: .lh-tight .fs-2 }
