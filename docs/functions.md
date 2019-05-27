@@ -328,6 +328,47 @@ var colHarmonized = col.map(lcb.sr.harmonize);
 print(colHarmonized);
 ```
 
+
+### sr.topoCorrMinnaert(img)
+
+&#10551; `ee.Image`
+
+This is an implementation of the Minnaert topo correction that models k for every pixel as a function of slope, 
+specific to each Landsat reflectance band. 
+User can supply the DEM, by default the program will use "USGS/GMTED2010". Extremely low illumination regions
+can result is values being set to 0 for all bands. Note that sun zenith and azimuth are held constant for given a image.
+  
+This is the paper from which the implementation was ported:
+> Ge, H., Lu, D., He, S., Xu, A., Zhou, G., & Du, H. (2008). Pixel-based Minnaert correction method for reducing topographic effects on a Landsat 7 ETM+ image. 
+> Photogrammetric Engineering & Remote Sensing, 74(11), 1343-1350. | 
+> https://orst.library.ingentaconnect.com/content/asprs/pers/2008/00000074/00000011/art00003?crawler=true&mimetype=application/pdf
+
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| props.demMinnaert | `string` | Path to DEM. Default: USGS/GMTED2010 |
+
+Example: apply to ee.Image. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+var img = lcb.sr.getLT05img();
+var imgTopoCorr = lcb.sr.topoCorrMinnaert(img);
+print(imgTopoCorr);
+```
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+var col = lcb.sr.getL578col()
+var colHarmonized = col.map(lcb.sr.harmonize);                     
+print(colHarmonized);
+```
+
+
+
+
 --------------------------------------------------------------------------------------------
 
 ## **Masking**
