@@ -773,7 +773,7 @@ Map.addLayer(colMos.filter(ee.Filter.eq('distinct_path', '038_20180709')));
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicMedoid(col)
+### sr.mosaicMedoid(col)
 
 &#10551; `ee.ImageCollection`
 
@@ -799,7 +799,30 @@ print(colMos);
 
 --------------------------------------------------------------------------------------------
 
-### xx.mosaicTargetDOY - TODO
+### sr.mosaicDOY(col)
+
+&#10551; `ee.ImageCollection`
+
+Reduce an image collection by nearness to selected target day-of-year. Selects the unmasked pixel 
+having the least absolute difference between time of observation and user-defined target day-of-year. 
+Adds a band named "DOY" to the resulting mosaic with values corresponding to the day-of-year for the 
+selected pixels.
+
+| Param  | Type | Description |
+| :- | :- | :- |
+| col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
+| props.doyTarget | `integer` | Target day-of-year |
+
+Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+{: .lh-tight .fs-2 }
+```js
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
+lcb.setProps({doyTarget: 215});
+var col = lcb.sr.getLC08col()
+  .map(lcb.sr.standardizeBands);
+var colMos = lcb.sr.mosaicDOY(col);
+print(colMos);
+```
 
 --------------------------------------------------------------------------------------------
 
