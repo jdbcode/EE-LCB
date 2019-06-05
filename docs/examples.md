@@ -537,4 +537,39 @@ ui.root.widgets().reset([splitPanel]);
 linkedMap.centerObject(lcb.props.aoi, 9);
 ```
 
+## Compositing and Mosaicking
 
+### Make an annual mosaic by target day-of-year
+
+Example [Try Live](https://code.earthengine.google.com/ceff10308a1d09846823ee835c9129e1)
+{: .lh-tight .fs-2 }
+```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
+// set collection properties - note doyTarget needs to be set
+lcb.setProps({
+  startYear: 1999,
+  endYear: 1999,
+  startDate: '07-01',
+  endDate: '09-01',
+  sensors: ['LT05', 'LE07'],
+  cfmask: ['cloud', 'shadow'],
+  doyTarget: 220,
+  aoi: ee.Geometry.Point([-110.438, 44.609])
+});
+
+// make a cloud masked collection based on defined props
+var col = lcb.sr.gather()
+  .map(lcb.sr.maskCFmask)
+  .map(lcb.sr.standardizeBands);
+
+// mosaic the 1999 image collection by nearest to target day-of-year  
+var colMos = lcb.sr.mosaicDOY(col);
+
+// display the mosaic
+Map.addLayer(colMos, {bands:['DOY'], min:170, max:250}, 'DOY');
+
+// display the day-of-year year in the mosaic
+Map.addLayer(lcb.sr.visualize654(colMos),{},'RGB');
+```
