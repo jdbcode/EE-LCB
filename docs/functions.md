@@ -813,7 +813,7 @@ selected pixels.
 | col | `ee.ImageCollection` | A Landsat surface reflectance image collection |
 | props.doyTarget | `integer` | Target day-of-year |
 
-Example: apply to ee.ImageCollection. [Try Live](http://example.com/)
+Example: apply to ee.ImageCollection. [Try Live](https://code.earthengine.google.com/09c056bc6ae8a7f3a251b7ee0fc6a856)
 {: .lh-tight .fs-2 }
 ```js
 var lcb = require('users/jstnbraaten/modules:ee-lcb.js');
