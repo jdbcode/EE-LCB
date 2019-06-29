@@ -84,11 +84,10 @@ lcb.setProps({cfmask: ['cloud', 'shadow']})
 
 ## Band Naming Convention
 
-The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat is different (Fig 1). all images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names will match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
+The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different (Fig 1). All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
 
 
 |Band Name        |LT05 (TM)        |LE07 (ETM+)      |LC08 (OLI)|
-|---              |---              |---              |---       |
 |Ultra-blue band  |-                |-                |B1 (0.43-0.45 mm)|
 |Blue band        |B1 (0.45-0.52 mm)|B1 (0.45-0.52 mm)|B2 (0.45-0.51)|
 |Green band       |B2 (0.52-0.60)   |B2 (0.52-0.60)   |B3 (0.53-0.59)|
@@ -102,34 +101,27 @@ Figure 1. Landsat band properties
 
 ## Band Harmonization
 
-Because Landsat 5 and 7 have slightly different widths than Landsat 8 for corresponding bands and because of other differences in sensor properties, there is a notable difference in measurement. We recommend harmonizing these data sets if they are to be mixed together in a inter-sensor composites or time series analyses. We provide a standard linear transformation recommended by Roy et al 2016.
+Because Landsat 5 and 7 have slightly different widths than Landsat 8 for corresponding bands and because of other differences in sensor properties, there is a notable difference in measurement. We recommend harmonizing these data sets if they are to be mixed together in inter-sensor composites or time series analyses. We provide a standard linear transformation recommended by Roy et al 2016.
 
 ## Cloud masking
 
-Landsat Surface reflectance products are delivered with a mask from the CFmask algorithm that include features: cloud, cloud shadow, water, and snow. By using these mask to exclude cloud and cloud shadow images pixels, clear-view composites can be contructed by mosaicking intersecting images within a given time window (a couple months during the summer seeason, for instance). EE-LCB provides a function to masks out these features from images and allows you to select which features to include in the mask. We recommend that this oppertation be performed before preforming spectral transformations or compositing.
+Landsat Surface reflectance products are delivered with masks from the CFmask algorithm that include features: cloud, cloud shadow, water, and snow. By using these masks to exclude cloud and cloud shadow images pixels, clear-view composites can be contructed by mosaicking intersecting images within a given time window (a couple of months during the summer season, for instance). EE-LCB provides a function to mask out these features from images and allows you to select which features to include in the mask. We recommend that this operation be performed before preforming spectral transformations or compositing.
 
 ## Transformations
 
-Spectral transformations can compact variblilty variablity from two or more bands into a single band and also narrow varibiltiy to an image feature, such as vegetation (NDVI) or brightness (Tasselled cap brightness)
-
-
-
+Spectral transformations can compact variablity from two or more bands into a single band and also narrow variablity to an image feature, such as vegetation (NDVI) or brightness (Tasselled cap brightness).
 
 ## Images properties added
 
 A number of image properties are added mostly for internal use by module functions, but you may find them of interest. Here are their definitions:
 
-
 | Property | Type | Definition |
 | bands         | `string`| whether bands and their names are from the orginal data set ('original') or altered to match LC08 and include only reflectance and qa_pixel bands ('standardized') |
-| band_names    | `string`| Whether band names are orginal ('!LC08') or LC08-equivelant ('LC08') |
+| band_names    | `string`| Whether band names are original ('!LC08') or LC08-equivalent ('LC08') |
 | composite_year| `int`   | |
 | filler        | `string`| Is the image a blank representative for a composite year that had no images - 'yes' or 'no'|
 | harmonized_to | `string`|  true, false,  'null' |
 | sensing_year  | `int`   | The year of image aquisition, which can be different from the composite year, if the composite is allowed to cross the new year, for example in the case where images from December, Janruary, and February are allowed to be mosaicked as a southern hemisphere summer image composite.|
-
-
-
 
 ## Landsat
 
