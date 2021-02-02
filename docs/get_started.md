@@ -73,16 +73,16 @@ lcb.setProps({cfmask: ['cloud', 'shadow']})
 The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different (Fig 1). All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
 
 
-| Band Name        | LT05 (TM)        | LE07 (ETM+)      | LC08 (OLI)|
+| Band Name        | LT05 (TM)        | LE07 (ETM+)      | LC08 (OLI) |
 | --- | --- | --- | --- |
-| Ultra-blue band  | -                | -                | B1 (0.43-0.45 mm) |
+| Ultra-blue band  | NA                | NA                | B1 (0.43-0.45 mm) |
 | Blue band        | B1 (0.45-0.52 mm) | B1 (0.45-0.52 mm) | B2 (0.45-0.51) |
 | Green band       | B2 (0.52-0.60)   | B2 (0.52-0.60)   | B3 (0.53-0.59) |
 | Red band         | B3 (0.63-0.69)   | B3 (0.63-0.69)   | B4 (0.64-0.67) |
 | NIR band         | B4 (0.76-0.90)   | B4 (0.77-0.90)   | B5 (0.85-0.88) |
 | SWIR 1 band      | B5 (1.55-1.75)   | B5 (1.55-1.75)   | B6 (1.57-1.65) |
 | SWIR 2 band      | B7 (2.08-2.35)   | B7 (2.09-2.35)   | B7 (2.11-2.29) |
-| Cirrus band      | -                | -                | B8 (1.36-1.38) |
+| Cirrus band      | NA                | NA                | B8 (1.36-1.38) |
 Figure 1. Landsat band properties
 
 
