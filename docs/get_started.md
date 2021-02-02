@@ -11,20 +11,6 @@ nav_order: 2
 ## Table of contents
 {:.no_toc .text-delta}
 
-
-## What
-
-EE-LCB has three aims:
-
-1. Make generating annual 
-
-
-
-## Why
-
-
-## How
-
 ## EE-LCB<small>sr</small> refered to hereafter as LCB is a 
 
 
@@ -87,15 +73,16 @@ lcb.setProps({cfmask: ['cloud', 'shadow']})
 The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different (Fig 1). All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
 
 
-|Band Name        |LT05 (TM)        |LE07 (ETM+)      |LC08 (OLI)|
-|Ultra-blue band  |-                |-                |B1 (0.43-0.45 mm)|
-|Blue band        |B1 (0.45-0.52 mm)|B1 (0.45-0.52 mm)|B2 (0.45-0.51)|
-|Green band       |B2 (0.52-0.60)   |B2 (0.52-0.60)   |B3 (0.53-0.59)|
-|Red band         |B3 (0.63-0.69)   |B3 (0.63-0.69)   |B4 (0.64-0.67)|
-|NIR band         |B4 (0.76-0.90)   |B4 (0.77-0.90)   |B5 (0.85-0.88)|
-|SWIR 1 band      |B5 (1.55-1.75)   |B5 (1.55-1.75)   |B6 (1.57-1.65)|
-|SWIR 2 band      |B7 (2.08-2.35)   |B7 (2.09-2.35)   |B7 (2.11-2.29)|
-|Cirrus band      |-                |-                |B8 (1.36-1.38)|
+| Band Name        | LT05 (TM)        | LE07 (ETM+)      | LC08 (OLI)|
+| --- | --- | --- | --- |
+| Ultra-blue band  | -                | -                | B1 (0.43-0.45 mm) |
+| Blue band        | B1 (0.45-0.52 mm) | B1 (0.45-0.52 mm) | B2 (0.45-0.51) |
+| Green band       | B2 (0.52-0.60)   | B2 (0.52-0.60)   | B3 (0.53-0.59) |
+| Red band         | B3 (0.63-0.69)   | B3 (0.63-0.69)   | B4 (0.64-0.67) |
+| NIR band         | B4 (0.76-0.90)   | B4 (0.77-0.90)   | B5 (0.85-0.88) |
+| SWIR 1 band      | B5 (1.55-1.75)   | B5 (1.55-1.75)   | B6 (1.57-1.65) |
+| SWIR 2 band      | B7 (2.08-2.35)   | B7 (2.09-2.35)   | B7 (2.11-2.29) |
+| Cirrus band      | -                | -                | B8 (1.36-1.38) |
 Figure 1. Landsat band properties
 
 
@@ -116,12 +103,13 @@ Spectral transformations can compact variablity from two or more bands into a si
 A number of image properties are added mostly for internal use by module functions, but you may find them of interest. Here are their definitions:
 
 | Property | Type | Definition |
-| bands         | `string`| whether bands and their names are from the orginal data set ('original') or altered to match LC08 and include only reflectance and qa_pixel bands ('standardized') |
-| band_names    | `string`| Whether band names are original ('!LC08') or LC08-equivalent ('LC08') |
-| composite_year| `int`   | |
-| filler        | `string`| Is the image a blank representative for a composite year that had no images - 'yes' or 'no'|
-| harmonized_to | `string`|  true, false,  'null' |
-| sensing_year  | `int`   | The year of image aquisition, which can be different from the composite year, if the composite is allowed to cross the new year, for example in the case where images from December, Janruary, and February are allowed to be mosaicked as a southern hemisphere summer image composite.|
+| --- | --- | --- |
+| bands         | `string` | whether bands and their names are from the orginal data set ('original') or altered to match LC08 and include only reflectance and qa_pixel bands ('standardized') |
+| band_names    | `string` | Whether band names are original ('!LC08') or LC08-equivalent ('LC08') |
+| composite_year| `int`   | The year label given to a composite image |
+| filler        | `string` | Is the image a blank representative for a composite year that had no images - 'yes' or 'no' |
+| harmonized_to | `string` |  true, false,  'null' |
+| sensing_year  | `int`   | The year of image aquisition, which can be different from the composite year, if the composite is allowed to cross the new year, for example in the case where images from December, Janruary, and February are allowed to be mosaicked as a southern hemisphere summer image composite. |
 
 ## Landsat
 
