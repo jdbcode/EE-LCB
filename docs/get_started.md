@@ -70,7 +70,7 @@ lcb.setProps({cfmask: ['cloud', 'shadow']})
 
 ## Band Naming Convention
 
-The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different (Fig 1). All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
+The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different. All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
 
 
 | Band Name        | LT05 (TM)        | LE07 (ETM+)      | LC08 (OLI) |
@@ -83,8 +83,6 @@ The Landsat surface reflectance product is available for Landsat 5, 7, and 8 dat
 | SWIR 1 band      | B5 (1.55-1.75)   | B5 (1.55-1.75)   | B6 (1.57-1.65) |
 | SWIR 2 band      | B7 (2.08-2.35)   | B7 (2.09-2.35)   | B7 (2.11-2.29) |
 | Cirrus band      | NA                | NA                | B8 (1.36-1.38) |
-Figure 1. Landsat band properties
-
 
 ## Band Harmonization
 
